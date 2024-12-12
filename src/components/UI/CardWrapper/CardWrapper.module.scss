@@ -1,0 +1,19 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  padding: 12px 16px;
+  border-radius: 16px;
+  flex-direction: column;
+
+  &.primary {
+    background: var(--color-blue-1);
+  }
+
+  &.secondary {
+    background: var(--color-gray-5);
+  }
+
+  &.primaryLinear {
+    background: var(--primary-gradinet);
+  }
+}

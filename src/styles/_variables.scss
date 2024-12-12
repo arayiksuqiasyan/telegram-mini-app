@@ -1,0 +1,21 @@
+:root {
+  --color-dark-1: #0f0f0f;
+  --color-light-1: #ffffff;
+  --color-light-transparent-1: rgba(255, 255, 255, 0.15);
+
+  --color-gray-1: #aaaaaa;
+  --color-gray-2: #515151;
+  --color-gray-3: #525252;
+  --color-gray-4: #2c2c2c;
+  --color-gray-5: #212121;
+
+  --color-blue-1: #2990ff;
+  --color-blue-2: #0076f5;
+  --color-blue-3: #8fc4ff;
+  --color-blue-4: #004999;
+
+  --color-green-1: #32e55e;
+
+  // Gradient
+  --primary-gradinet: linear-gradient(var(--color-blue-1) 0%, var(--color-blue-4) 100%);
+}
