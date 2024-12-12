@@ -13,10 +13,11 @@
   --color-blue-2: #0076f5;
   --color-blue-3: #8fc4ff;
   --color-blue-4: #004999;
-  --color-blue-5: #52A5FF;
+  --color-blue-5: #52a5ff;
 
   --color-green-1: #32e55e;
 
   // Gradient
   --primary-gradinet: linear-gradient(var(--color-blue-1) 0%, var(--color-blue-4) 100%);
+  --bottom-tab-bard-gradinet: linear-gradient(transparent 0%, var(--color-dark-1) 100%);
 }

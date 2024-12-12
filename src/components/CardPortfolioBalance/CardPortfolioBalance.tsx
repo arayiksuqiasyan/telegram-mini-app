@@ -9,6 +9,7 @@ import ton from '/public/png/ton.png'
 import RoundExclamationIcon from '/public/svg/round-exclamation-mark.svg'
 import RefillIcon from '/public/svg/refill.svg'
 import WithdrawIcon from '/public/svg/withdraw.svg'
+import Tooltip, { TooltipPosition } from '@/components/UI/Tooltip/Tooltip'
 
 interface ICardPortfolioBalance {
   title?: string
@@ -38,10 +39,18 @@ const CardPortfolioBalance: React.FC<ICardPortfolioBalance> = ({
       <div className={classes.wrapper}>
         <div className="d-flex align-items-center justify-content-between">
           <span className="tx-white fz-13 tx-uppercase">{title}</span>
-          <div className={classes.badge} onClick={() => onClickBadge?.()}>
-            <span className="tx-white fz-13 tx-uppercase">{badgeTitle}</span>
-            <RoundExclamationIcon />
-          </div>
+          <Tooltip
+            outsideClose={true}
+            position={TooltipPosition.InsideLeft}
+            content={
+              'We want to know that you are a real user, so, you need to fund your balance using cryptocurrency or telegram stars'
+            }
+          >
+            <div className={classes.badge} onClick={() => onClickBadge?.()}>
+              <span className="tx-white fz-13 tx-uppercase">{badgeTitle}</span>
+              <RoundExclamationIcon />
+            </div>
+          </Tooltip>
         </div>
         <div className="d-flex align-items-center mt-8 gap-12">
           <Image src={ton} alt={'ton'} width={48} height={48} priority />
