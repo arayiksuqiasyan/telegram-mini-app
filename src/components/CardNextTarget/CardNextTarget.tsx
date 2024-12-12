@@ -26,7 +26,7 @@ const CardNextTarget: React.FC<ICardNextTarget> = ({
 }) => {
   return (
     <CardWrapper type={CardWrapperType.PrimaryLinear}>
-      <div className="d-flex align-items-center justify-content-between mb-8">
+      <div className="d-flex align-items-center justify-content-between mb-8 overflow-hidden">
         <span className="tx-white tx-uppercase fz-13">Next target</span>
         <ArrowRightIcon width={10} height={10}/>
         <div className={classes.badge}>
