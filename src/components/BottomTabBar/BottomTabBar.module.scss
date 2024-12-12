@@ -1,0 +1,23 @@
+.bottomTabBar {
+  left: 12px;
+  z-index: 10;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  padding: 12px;
+  position: fixed;
+  border-radius: 16px;
+  align-items: center;
+  justify-content: space-around;
+  background: var(--color-gray-5);
+}
+
+.tabBarOption {
+  -webkit-tap-highlight-color: transparent;
+  &.tabBarOptionActive {
+    svg {
+      fill: var(--color-blue-1);
+      transition: 0.15s fill ease-in-out;
+    }
+  }
+}
