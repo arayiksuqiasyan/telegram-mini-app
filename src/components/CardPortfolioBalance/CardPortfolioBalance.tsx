@@ -64,7 +64,7 @@ const CardPortfolioBalance: React.FC<ICardPortfolioBalance> = ({
         </div>
         <div className="w-100 d-flex align-items-center justify-content-center mt-12 gap-8">
           <Button
-            className="radius-10"
+            className="radius-10 pt-14 pb-14"
             type={ButtonTypes.Secondary}
             disabled={disableRefill}
             onClick={() => onRefill?.()}
@@ -80,7 +80,7 @@ const CardPortfolioBalance: React.FC<ICardPortfolioBalance> = ({
             </div>
           </Button>
           <Button
-            className="radius-10"
+            className="radius-10 pt-14 pb-14"
             type={ButtonTypes.Secondary}
             disabled={disableWithdraw}
             onClick={() => onWithdraw?.()}
