@@ -10,7 +10,7 @@ import RoundExclamationIcon from '/public/svg/round-exclamation-mark.svg'
 import RefillIcon from '/public/svg/refill.svg'
 import WithdrawIcon from '/public/svg/withdraw.svg'
 
-interface iCardPortfolioBalance {
+interface ICardPortfolioBalance {
   title?: string
   badgeTitle?: string
   onClickBadge?: () => void
@@ -22,7 +22,7 @@ interface iCardPortfolioBalance {
   disableWithdraw?: boolean
 }
 
-const CardPortfolioBalance: React.FC<iCardPortfolioBalance> = ({
+const CardPortfolioBalance: React.FC<ICardPortfolioBalance> = ({
   title = 'Portfolio Balance',
   badgeTitle = 'Unverified',
   onClickBadge,
