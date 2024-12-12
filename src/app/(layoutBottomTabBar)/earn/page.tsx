@@ -1,5 +1,4 @@
 import React from 'react'
-import classes from './Earn.module.scss'
 
 const EarnPage = () => {
   return (
