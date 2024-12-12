@@ -12,11 +12,22 @@
   font-weight: 700;
   -webkit-tap-highlight-color: transparent;
 
+  &.secondary{
+    color: var(--color-light-1);
+    background-color: var(--color-light-transparent-1)
+  }
+
+  &.primaryPale{
+    color: var(--color-light-1);
+    background-color: var(--color-blue-5);
+  }
+
   &.isBlock {
     width: 100%;
   }
 
   &:disabled {
+    color: var(--color-light-transparent-1);
     background-color: var(--color-light-transparent-1);
   }
 

@@ -1,12 +1,14 @@
 'use client'
 import React from 'react'
 import classes from './CardPortfolioBalance.module.scss'
+import Image from 'next/image'
+import Button, { ButtonTypes } from '@/components/UI/Button/Button'
 import CardWrapper, { CardWrapperType } from '@/components/UI/CardWrapper/CardWrapper'
 
 import ton from '/public/png/ton.png'
 import RoundExclamationIcon from '/public/svg/round-exclamation-mark.svg'
-import Image from 'next/image'
-import Button from "@/components/UI/Button/Button";
+import RefillIcon from '/public/svg/refill.svg'
+import WithdrawIcon from '/public/svg/withdraw.svg'
 
 interface iCardPortfolioBalance {
   title?: string
@@ -52,8 +54,38 @@ const CardPortfolioBalance: React.FC<iCardPortfolioBalance> = ({
           </div>
         </div>
         <div className="w-100 d-flex align-items-center justify-content-center mt-12 gap-8">
-          <Button block>Refill</Button>
-          <Button block>Withdraw</Button>
+          <Button
+            className="radius-10"
+            type={ButtonTypes.Secondary}
+            disabled={disableRefill}
+            onClick={() => onRefill?.()}
+            block
+          >
+            <div className="d-flex align-items-center gap-6">
+              <RefillIcon
+                width={16}
+                height={16}
+                fill={disableRefill ? 'var(--color-light-transparent-1)' : 'var(--color-light-1)'}
+              />
+              <span>Refill</span>
+            </div>
+          </Button>
+          <Button
+            className="radius-10"
+            type={ButtonTypes.Secondary}
+            disabled={disableWithdraw}
+            onClick={() => onWithdraw?.()}
+            block
+          >
+            <div className="d-flex align-items-center gap-6">
+              <WithdrawIcon
+                width={16}
+                height={16}
+                fill={disableWithdraw ? 'var(--color-light-transparent-1)' : 'var(--color-light-1)'}
+              />
+              <span>Withdraw</span>
+            </div>
+          </Button>
         </div>
       </div>
     </CardWrapper>

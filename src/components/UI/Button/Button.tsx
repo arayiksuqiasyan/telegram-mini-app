@@ -5,6 +5,8 @@ import classNames from 'classnames'
 
 export enum ButtonTypes {
   Primary = 'primary',
+  PrimaryPale = 'primaryPale',
+  Secondary = 'secondary',
 }
 
 export type Props = {
