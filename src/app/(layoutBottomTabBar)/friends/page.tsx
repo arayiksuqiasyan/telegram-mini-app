@@ -6,7 +6,7 @@ import { shareURL } from '@telegram-apps/sdk'
 const FriendsPage = () => {
   const onInviteFriends = useCallback(() => {
     if (shareURL.isAvailable() && process?.env?.NEXT_PUBLIC_MANIFEST_URL) {
-      shareURL(process.env.NEXT_PUBLIC_MANIFEST_URL, 'Telegram Mini App')
+      shareURL("https://telegram-mini-app-ten-liard.vercel.app/manifest.json", 'Telegram Mini App')
     }
   }, [])
 

@@ -32,7 +32,7 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
     <html lang="en">
       <body>
         <Script src="https://telegram.org/js/telegram-web-app.js?56" strategy={'beforeInteractive'} />
-        <TonConnectUIProvider manifestUrl={process.env.NEXT_PUBLIC_MANIFEST_URL}>{children}</TonConnectUIProvider>
+        <TonConnectUIProvider manifestUrl={"https://telegram-mini-app-ten-liard.vercel.app/manifest.json"}>{children}</TonConnectUIProvider>
       </body>
     </html>
   )
