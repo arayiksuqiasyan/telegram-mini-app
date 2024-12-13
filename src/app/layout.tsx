@@ -19,6 +19,7 @@ interface IRootLayout extends PropsWithChildren {
   children?: React.ReactNode
 }
 
+
 const RootLayout: React.FC<IRootLayout> = ({ children }) => {
   useEffect(() => {
     try {
@@ -26,13 +27,15 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
     } catch (error) {
       console.error('Error initializing Telegram SDK:', error)
     }
-  })
+  }, [])
 
   return (
     <html lang="en">
       <body>
         <Script src="https://telegram.org/js/telegram-web-app.js?56" strategy={'beforeInteractive'} />
-        <TonConnectUIProvider manifestUrl={"https://telegram-mini-app-ten-liard.vercel.app/manifest.json"}>{children}</TonConnectUIProvider>
+        <TonConnectUIProvider manifestUrl={'https://telegram-mini-app-ten-liard.vercel.app/manifest.json'}>
+          {children}
+        </TonConnectUIProvider>
       </body>
     </html>
   )
