@@ -15,7 +15,7 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
   return (
     <html lang="en">
       <body>
-        <TonConnectUIProvider manifestUrl={"https://telegram-mini-app-ten-liard.vercel.app/manifest.json"}>
+        <TonConnectUIProvider manifestUrl={'https://telegram-mini-app-ten-liard.vercel.app/manifest.json'}>
           {children}
         </TonConnectUIProvider>
       </body>
