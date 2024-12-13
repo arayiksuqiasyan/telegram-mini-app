@@ -15,6 +15,7 @@
     "@tonconnect/ui-react": "^2.0.9",
     "axios": "^1.7.9",
     "classnames": "^2.5.1",
+    "date-fns": "^4.1.0",
     "motion": "^11.14.1",
     "next": "14.2.16",
     "react": "^18",

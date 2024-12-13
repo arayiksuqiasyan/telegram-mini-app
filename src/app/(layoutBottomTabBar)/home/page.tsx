@@ -46,7 +46,7 @@ const HomePage = () => {
         level={1}
         tonCount={'45.00'}
         tonPrice={'$230.40'}
-        timeLeft={'48:33:00'}
+        timeLeft={Date.now() + 172801000}
         onLevelUp={() => console.log('onLevelUp')}
       />
       <CardProgress
