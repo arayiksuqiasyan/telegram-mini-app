@@ -9,20 +9,30 @@ import CardProgress from '@/components/CardProgress/CardProgress'
 import WalletIcon from '/public/svg/wallet.svg'
 import StarIcon from '/public/svg/star.svg'
 import BottomSheetVerification from '@/components/BottomSheetVerification/BottomSheetVerification'
-import WebApp from '@twa-dev/sdk'
 
 const HomePage = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [user, serUser] = useState<any>({})
 
-  useEffect(()=>{
-    console.log("window?.Telegram",WebApp.requestContact(()=>{
-      console.log(123)
-    }))
-  },[])
+  useEffect(() => {
+    const initWebApp = async () => {
+      if (typeof window !== 'undefined') {
+        const WebApp = (await import('@twa-dev/sdk')).default
+        WebApp.ready()
+        serUser(WebApp?.initDataUnsafe?.user)
+      }
+    }
+
+    void initWebApp()
+  }, [])
 
   return (
     <div className={classes.wrapper}>
-      <Button className="fw-700" onClick={() => setIsOpen(true)}>Verification now</Button>
+      <Button className="fw-700" onClick={() => setIsOpen(true)}>
+        Verification now
+      </Button>
+
+      <span className="tx-white">1{JSON.stringify(user)}</span>
       {/*<Button type={ButtonTypes.Success} className="pt-12 pb-12 radius-10">*/}
       {/*  <div className="w-100 d-flex align-items-center justify-content-between">*/}
       {/*    <div className="d-flex align-items-center gap-16 flex-grow-1">*/}
@@ -62,7 +72,7 @@ const HomePage = () => {
         conditionText={'There are 3 friends left to invite before moving to level 2'}
       />
 
-      <BottomSheetVerification isOpen={isOpen} setIsOpen={setIsOpen}/>
+      <BottomSheetVerification isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
   )
 }
