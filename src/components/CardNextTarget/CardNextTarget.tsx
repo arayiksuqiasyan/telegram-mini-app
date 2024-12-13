@@ -77,7 +77,6 @@ const TimeLeft = React.memo(({ timeLeft }: { timeLeft: number }) => {
     const minutes = Math.floor((milliseconds % (1000 * 60 * 60)) / (1000 * 60))
     const seconds = Math.floor((milliseconds % (1000 * 60)) / 1000)
 
-    console.log(hours)
     return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
   }, [])
 

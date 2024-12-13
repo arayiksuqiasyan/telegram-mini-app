@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import classes from './HomePage.module.scss'
 import Button, { ButtonTypes } from '@/components/UI/Button/Button'
 import CardPortfolioBalance from '@/components/CardPortfolioBalance/CardPortfolioBalance'
@@ -9,9 +9,16 @@ import CardProgress from '@/components/CardProgress/CardProgress'
 import WalletIcon from '/public/svg/wallet.svg'
 import StarIcon from '/public/svg/star.svg'
 import BottomSheetVerification from '@/components/BottomSheetVerification/BottomSheetVerification'
+import WebApp from '@twa-dev/sdk'
 
 const HomePage = () => {
   const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(()=>{
+    console.log("window?.Telegram",WebApp.requestContact(()=>{
+      console.log(123)
+    }))
+  },[])
 
   return (
     <div className={classes.wrapper}>
