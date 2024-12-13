@@ -20,9 +20,7 @@ const HomePage = () => {
       if (typeof window !== 'undefined') {
         const WebApp = (await import('@twa-dev/sdk')).default
         WebApp.ready()
-        console.log(WebApp)
         serUser(WebApp?.initDataUnsafe?.user)
-        WebApp.sendData(JSON.stringify({ a: 1, b: 2 }))
       }
     }
 
@@ -33,6 +31,19 @@ const HomePage = () => {
     <div className={classes.wrapper}>
       <Button className="fw-700" onClick={() => setIsOpen(true)}>
         Verification now
+      </Button>
+
+      <Button
+        onClick={async () => {
+          const inviteLink = 'https://telegram-mini-app-ten-liard.vercel.app/'
+          if (typeof window !== 'undefined') {
+            const WebApp = (await import('@twa-dev/sdk')).default
+            WebApp.ready()
+            WebApp.openTelegramLink(inviteLink)
+          }
+        }}
+      >
+        Invite Frends
       </Button>
 
       <span className="tx-white">1{JSON.stringify(user)}</span>

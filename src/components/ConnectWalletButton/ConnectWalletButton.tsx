@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { useTonConnectUI } from '@tonconnect/ui-react'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback } from 'react'
 import Button, { ButtonTypes } from '@/components/UI/Button/Button'
 
 import ArrowRightIcon from '/public/svg/arrow-right-long.svg'
