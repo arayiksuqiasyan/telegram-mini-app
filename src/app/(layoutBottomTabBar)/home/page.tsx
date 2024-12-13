@@ -9,17 +9,20 @@ import CardProgress from '@/components/CardProgress/CardProgress'
 import WalletIcon from '/public/svg/wallet.svg'
 import StarIcon from '/public/svg/star.svg'
 import BottomSheetVerification from '@/components/BottomSheetVerification/BottomSheetVerification'
+import { InitDataUnsafeUser } from '@/interfaces/telegram'
 
 const HomePage = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const [user, serUser] = useState<any>({})
+  const [user, serUser] = useState<InitDataUnsafeUser | undefined>(undefined)
 
   useEffect(() => {
     const initWebApp = async () => {
       if (typeof window !== 'undefined') {
         const WebApp = (await import('@twa-dev/sdk')).default
         WebApp.ready()
+        console.log(WebApp)
         serUser(WebApp?.initDataUnsafe?.user)
+        WebApp.sendData(JSON.stringify({ a: 1, b: 2 }))
       }
     }
 
