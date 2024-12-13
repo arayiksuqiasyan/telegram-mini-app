@@ -1,5 +1,5 @@
 'use client'
-import React, { PropsWithChildren } from 'react'
+import React, { PropsWithChildren, useEffect } from 'react'
 import './app.scss'
 import dynamic from 'next/dynamic'
 import Script from 'next/script'
@@ -20,14 +20,19 @@ interface IRootLayout extends PropsWithChildren {
 }
 
 const RootLayout: React.FC<IRootLayout> = ({ children }) => {
+  useEffect(() => {
+    try {
+      init()
+    } catch (error) {
+      console.error('Error initializing Telegram SDK:', error)
+    }
+  })
 
   return (
     <html lang="en">
       <body>
         <Script src="https://telegram.org/js/telegram-web-app.js?56" strategy={'beforeInteractive'} />
-        <TonConnectUIProvider manifestUrl={process.env.NEXT_PUBLIC_MANIFEST_URL}>
-          {children}
-        </TonConnectUIProvider>
+        <TonConnectUIProvider manifestUrl={process.env.NEXT_PUBLIC_MANIFEST_URL}>{children}</TonConnectUIProvider>
       </body>
     </html>
   )
