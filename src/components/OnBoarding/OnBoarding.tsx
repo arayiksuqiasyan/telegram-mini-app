@@ -22,7 +22,7 @@ const OnBoarding = () => {
       </header>
 
       <section className="d-flex flex-column mt-56">
-        <CardReward level={1} tonCount={'10.00'} tonPrice={'$51.11'} />
+        <CardReward level={1} tonCount={'11.00'} tonPrice={'$51.11'} />
         <Button className="radius-10 pt-14 pb-14 mt-16" type={ButtonTypes.Primary} onClick={onClaim}>
           Claim
         </Button>
