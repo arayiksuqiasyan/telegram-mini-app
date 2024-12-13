@@ -15,7 +15,7 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
   return (
     <html lang="en">
       <body>
-        <TonConnectUIProvider manifestUrl={"https://ivory-large-asp-773.mypinata.cloud/files/bafkreigwbksx77ykjboifk6ehhbgalhxjqlm4f3q23vdandsc7nuu2kqty?X-Algorithm=PINATA1&X-Date=1734093694&X-Expires=30&X-Method=GET&X-Signature=f76acd05057f52700328deff37096c8e56500dd53e74f42167135e67d6a1946d"}>
+        <TonConnectUIProvider manifestUrl={"https://telegram-mini-app-ten-liard.vercel.app/manifest.json"}>
           {children}
         </TonConnectUIProvider>
       </body>
