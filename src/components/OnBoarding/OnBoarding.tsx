@@ -1,3 +1,4 @@
+'use client'
 import React, { useCallback } from 'react'
 import classes from './OnBoarding.module.scss'
 import CardReward from '@/components/CardReward/CardReward'

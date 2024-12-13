@@ -1,15 +1,39 @@
 'use client'
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import classes from './HomePage.module.scss'
-import Button from '@/components/UI/Button/Button'
+import Button, { ButtonTypes } from '@/components/UI/Button/Button'
 import CardPortfolioBalance from '@/components/CardPortfolioBalance/CardPortfolioBalance'
 import CardNextTarget from '@/components/CardNextTarget/CardNextTarget'
 import CardProgress from '@/components/CardProgress/CardProgress'
 
+import WalletIcon from '/public/svg/wallet.svg'
+import StarIcon from '/public/svg/star.svg'
+import BottomSheetVerification from '@/components/BottomSheetVerification/BottomSheetVerification'
+
 const HomePage = () => {
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
     <div className={classes.wrapper}>
-      <Button>Verification now</Button>
+      <Button className="fw-700" onClick={() => setIsOpen(true)}>Verification now</Button>
+      {/*<Button type={ButtonTypes.Success} className="pt-12 pb-12 radius-10">*/}
+      {/*  <div className="w-100 d-flex align-items-center justify-content-between">*/}
+      {/*    <div className="d-flex align-items-center gap-16 flex-grow-1">*/}
+      {/*      <WalletIcon />*/}
+      {/*      <span className="fz-17 tx-white">Wallet connected</span>*/}
+      {/*    </div>*/}
+      {/*    <span className="fz-17 tx-white">Tonkeeper</span>*/}
+      {/*  </div>*/}
+      {/*</Button>*/}
+
+      {/*<Button type={ButtonTypes.Success} className="pt-12 pb-12 radius-10">*/}
+      {/*  <div className="w-100 d-flex align-items-center gap-16">*/}
+      {/*    <StarIcon />*/}
+      {/*    <span className="fz-17 tx-white">Connect with Stars</span>*/}
+      {/*  </div>*/}
+      {/*</Button>*/}
+
+      {/*<ConnectWalletButton/>*/}
       <CardPortfolioBalance
         disableRefill
         disableWithdraw
@@ -30,6 +54,8 @@ const HomePage = () => {
         percent={5}
         conditionText={'There are 3 friends left to invite before moving to level 2'}
       />
+
+      <BottomSheetVerification isOpen={isOpen} setIsOpen={setIsOpen}/>
     </div>
   )
 }

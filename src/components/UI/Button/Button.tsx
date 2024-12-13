@@ -7,6 +7,7 @@ export enum ButtonTypes {
   Primary = 'primary',
   PrimaryPale = 'primaryPale',
   Secondary = 'secondary',
+  Success = 'success',
 }
 
 export type Props = {

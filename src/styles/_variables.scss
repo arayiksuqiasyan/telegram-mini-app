@@ -1,5 +1,6 @@
 :root {
   --color-dark-1: #0f0f0f;
+  --color-dark-transparent-1: rgba(15, 15, 15, 0.95);
   --color-light-1: #ffffff;
   --color-light-transparent-1: rgba(255, 255, 255, 0.15);
 
@@ -17,6 +18,14 @@
   --color-blue-6: #55a6ff;
 
   --color-green-1: #32e55e;
+
+  --rsbs-backdrop-bg: rgba(0, 0, 0, 0.6);
+  --rsbs-bg: #fff;
+  --rsbs-handle-bg: hsla(0, 0%, 0%, 0.14);
+  --rsbs-max-w: auto;
+  --rsbs-ml: env(safe-area-inset-left);
+  --rsbs-mr: env(safe-area-inset-right);
+  --rsbs-overlay-rounded: 16px;
 
   // Gradient
   --primary-gradinet: linear-gradient(var(--color-blue-1) 0%, var(--color-blue-4) 100%);
