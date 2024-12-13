@@ -6,6 +6,7 @@
 // import { useRouter } from 'next/navigation'
 
 import OnBoarding from '@/components/OnBoarding/OnBoarding'
+import Loader from '@/components/UI/Loader/Loader'
 
 export default function Layout() {
   // const router = useRouter()
@@ -60,7 +61,7 @@ export default function Layout() {
   // }, [tonConnectUI, handleWalletConnection, handleWalletDisconnection])
   //
   // if (isLoading) {
-  //   return <div>Loading...</div>
+  //   return <Loader text={'Add the code...'}/>
   // }
 
   return (
