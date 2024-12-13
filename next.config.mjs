@@ -6,8 +6,7 @@ const nextConfig = {
   },
   reactStrictMode: false,
   env: {
-    NEXT_PUBLIC_MANIFEST_URL:
-      '',
+    NEXT_PUBLIC_MANIFEST_URL: 'https://telegram-mini-app-ten-liard.vercel.app/manifest.json',
   },
   webpack(config) {
     config.module.rules.push({

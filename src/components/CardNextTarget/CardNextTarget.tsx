@@ -6,7 +6,7 @@ import CardWrapper, { CardWrapperType } from '@/components/UI/CardWrapper/CardWr
 
 import LevelUpIcon from '/public/svg/withdraw.svg'
 import ArrowRightIcon from '/public/svg/arrow-right.svg'
-import { differenceInMilliseconds, formatDuration, intervalToDuration } from 'date-fns'
+import { differenceInMilliseconds } from 'date-fns'
 
 interface ICardNextTarget {
   tonCount?: string | number

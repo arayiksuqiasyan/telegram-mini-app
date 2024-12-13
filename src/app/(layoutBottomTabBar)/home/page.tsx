@@ -33,19 +33,6 @@ const HomePage = () => {
         Verification now
       </Button>
 
-      <Button
-        onClick={async () => {
-          const inviteLink = 'https://telegram-mini-app-ten-liard.vercel.app/'
-          if (typeof window !== 'undefined') {
-            const WebApp = (await import('@twa-dev/sdk')).default
-            WebApp.ready()
-            WebApp.openTelegramLink(inviteLink)
-          }
-        }}
-      >
-        Invite Frends
-      </Button>
-
       <span className="tx-white">1{JSON.stringify(user)}</span>
       {/*<Button type={ButtonTypes.Success} className="pt-12 pb-12 radius-10">*/}
       {/*  <div className="w-100 d-flex align-items-center justify-content-between">*/}
