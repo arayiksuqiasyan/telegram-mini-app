@@ -4,8 +4,7 @@ import './app.scss'
 import dynamic from 'next/dynamic'
 import Script from 'next/script'
 import { Metadata } from 'next'
-import { init } from '@telegram-apps/sdk-react'
-
+import { TelegramService } from '@/services/telegram'
 const TonConnectUIProvider = dynamic(() => import('@tonconnect/ui-react').then(mod => mod.TonConnectUIProvider), {
   ssr: false,
 })
@@ -19,14 +18,9 @@ interface IRootLayout extends PropsWithChildren {
   children?: React.ReactNode
 }
 
-
 const RootLayout: React.FC<IRootLayout> = ({ children }) => {
   useEffect(() => {
-    try {
-      init()
-    } catch (error) {
-      console.error('Error initializing Telegram SDK:', error)
-    }
+    TelegramService.initTelegramAppsSdkReact()
   }, [])
 
   return (

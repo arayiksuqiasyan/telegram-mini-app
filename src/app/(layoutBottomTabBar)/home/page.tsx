@@ -1,39 +1,23 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import classes from './HomePage.module.scss'
 import Button, { ButtonTypes } from '@/components/UI/Button/Button'
-import CardPortfolioBalance from '@/components/CardPortfolioBalance/CardPortfolioBalance'
-import CardNextTarget from '@/components/CardNextTarget/CardNextTarget'
 import CardProgress from '@/components/CardProgress/CardProgress'
-
-import WalletIcon from '/public/svg/wallet.svg'
-import StarIcon from '/public/svg/star.svg'
+import CardNextTarget from '@/components/CardNextTarget/CardNextTarget'
+import CardPortfolioBalance from '@/components/CardPortfolioBalance/CardPortfolioBalance'
 import BottomSheetVerification from '@/components/BottomSheetVerification/BottomSheetVerification'
-import { InitDataUnsafeUser } from '@/interfaces/telegram'
+
+// import WalletIcon from '/public/svg/wallet.svg'
+// import StarIcon from '/public/svg/star.svg'
 
 const HomePage = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const [user, serUser] = useState<InitDataUnsafeUser | undefined>(undefined)
-
-  useEffect(() => {
-    const initWebApp = async () => {
-      if (typeof window !== 'undefined') {
-        const WebApp = (await import('@twa-dev/sdk')).default
-        WebApp.ready()
-        serUser(WebApp?.initDataUnsafe?.user)
-      }
-    }
-
-    void initWebApp()
-  }, [])
 
   return (
     <div className={classes.wrapper}>
       <Button className="fw-700" onClick={() => setIsOpen(true)}>
         Verification now
       </Button>
-
-      <span className="tx-white">1{JSON.stringify(user)}</span>
       {/*<Button type={ButtonTypes.Success} className="pt-12 pb-12 radius-10">*/}
       {/*  <div className="w-100 d-flex align-items-center justify-content-between">*/}
       {/*    <div className="d-flex align-items-center gap-16 flex-grow-1">*/}
@@ -51,7 +35,6 @@ const HomePage = () => {
       {/*  </div>*/}
       {/*</Button>*/}
 
-      {/*<ConnectWalletButton/>*/}
       <CardPortfolioBalance
         disableRefill
         disableWithdraw

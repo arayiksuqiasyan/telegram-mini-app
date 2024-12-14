@@ -1,13 +1,14 @@
 'use client'
 import React, { useCallback } from 'react'
 import Button from '@/components/UI/Button/Button'
-import { shareURL } from '@telegram-apps/sdk-react'
+import { TelegramService } from '@/services/telegram'
 
 const FriendsPage = () => {
   const onInviteFriends = useCallback(() => {
-    if (shareURL.isAvailable()) {
-      shareURL("https://telegram-mini-app-ten-liard.vercel.app/", 'Telegram Mini App')
-    }
+    TelegramService.inviteFriends({
+      url: 'https://telegram-mini-app-ten-liard.vercel.app/',
+      message: 'Telegram Mini App',
+    })
   }, [])
 
   return (

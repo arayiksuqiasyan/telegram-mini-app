@@ -4,6 +4,7 @@ import classes from './LayoutBottomTabBar.module.scss'
 import BottomTabBar from '@/components/BottomTabBar/BottomTabBar'
 import { useTonConnectUI } from '@tonconnect/ui-react'
 import useAppStore from '@/stores/useAppStore'
+import { TelegramService } from '@/services/telegram'
 
 interface ILayoutBottomTabBar extends PropsWithChildren {
   children?: React.ReactNode
@@ -11,7 +12,7 @@ interface ILayoutBottomTabBar extends PropsWithChildren {
 
 const LayoutBottomTabBar: React.FC<ILayoutBottomTabBar> = ({ children }) => {
   const [tonConnectUI] = useTonConnectUI()
-  const { setTonWalletAddress } = useAppStore()
+  const { telegramUser, setTelegramUser, setTonWalletAddress } = useAppStore()
 
   const handleWalletConnection = useCallback(
     (address: string) => {
@@ -25,6 +26,13 @@ const LayoutBottomTabBar: React.FC<ILayoutBottomTabBar> = ({ children }) => {
     setTonWalletAddress(undefined)
     console.log('Wallet Disconnect Successfully')
   }, [setTonWalletAddress])
+
+  const initWebApp = useCallback(async () => {
+    try {
+      const telegramUser = await TelegramService.getTelegramUser()
+      setTelegramUser(telegramUser)
+    } catch {}
+  }, [setTelegramUser])
 
   useEffect(() => {
     const checkWalletConnection = async () => {
@@ -48,6 +56,10 @@ const LayoutBottomTabBar: React.FC<ILayoutBottomTabBar> = ({ children }) => {
       unsubscribe()
     }
   }, [handleWalletConnection, handleWalletDisconnection, tonConnectUI])
+
+  useEffect(() => {
+    void initWebApp()
+  }, [initWebApp])
 
   return (
     <div className={classes.wrapper}>
