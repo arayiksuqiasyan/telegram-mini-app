@@ -4,7 +4,7 @@ import classes from './HomePage.module.scss'
 import Button, { ButtonTypes } from '@/components/UI/Button/Button'
 import CardProgress from '@/components/CardProgress/CardProgress'
 import CardNextTarget from '@/components/CardNextTarget/CardNextTarget'
-import CardPortfolioBalance from '@/components/CardPortfolioBalance/CardPortfolioBalance'
+import CardPortfolioBalance, { BadgeStatus } from '@/components/CardPortfolioBalance/CardPortfolioBalance'
 import BottomSheetVerification from '@/components/BottomSheetVerification/BottomSheetVerification'
 import History from '@/components/History/History'
 import { HistoryItemType } from '@/components/History/HistoryItem'
@@ -43,6 +43,7 @@ const HomePage = () => {
           disableWithdraw
           tonCount={'10.00'}
           tonPrice={`$51.11`}
+          badgeStatus={BadgeStatus.Unverified}
           onWithdraw={() => console.log('onWithdraw')}
           onRefill={() => console.log('onRefill')}
         />

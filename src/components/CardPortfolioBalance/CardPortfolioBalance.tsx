@@ -11,10 +11,15 @@ import RefillIcon from '/public/svg/refill.svg'
 import WithdrawIcon from '/public/svg/withdraw.svg'
 import Tooltip, { TooltipPosition } from '@/components/UI/Tooltip/Tooltip'
 
+export enum BadgeStatus {
+  Unverified = 'Unverified',
+  Verified = 'Verified',
+}
+
 interface ICardPortfolioBalance {
   title?: string
-  badgeTitle?: string
   onClickBadge?: () => void
+  badgeStatus?: BadgeStatus
   tonCount?: number | string
   tonPrice?: number | string
   onRefill?: () => void
@@ -25,7 +30,7 @@ interface ICardPortfolioBalance {
 
 const CardPortfolioBalance: React.FC<ICardPortfolioBalance> = ({
   title = 'Portfolio Balance',
-  badgeTitle = 'Unverified',
+  badgeStatus,
   onClickBadge,
   tonCount = '',
   tonPrice = '',
@@ -39,18 +44,26 @@ const CardPortfolioBalance: React.FC<ICardPortfolioBalance> = ({
       <div className={classes.wrapper}>
         <div className="d-flex align-items-center justify-content-between">
           <span className="tx-white fz-13 tx-uppercase">{title}</span>
-          <Tooltip
-            outsideClose={true}
-            position={TooltipPosition.InsideLeft}
-            content={
-              'We want to know that you are a real user, so, you need to fund your balance using cryptocurrency or telegram stars'
-            }
-          >
-            <div className={classes.badge} onClick={() => onClickBadge?.()}>
-              <span className="tx-white fz-13 tx-uppercase">{badgeTitle}</span>
-              <RoundExclamationIcon />
+          {badgeStatus === BadgeStatus.Unverified && (
+            <Tooltip
+              outsideClose={true}
+              position={TooltipPosition.InsideLeft}
+              content={
+                'We want to know that you are a real user, so, you need to fund your balance using cryptocurrency or telegram stars'
+              }
+            >
+              <div className={'badge'} onClick={() => onClickBadge?.()}>
+                <span className="tx-white fz-13 tx-uppercase">{badgeStatus}</span>
+                <RoundExclamationIcon />
+              </div>
+            </Tooltip>
+          )}
+
+          {badgeStatus === BadgeStatus.Verified && (
+            <div className={'badge badge--success'} onClick={() => onClickBadge?.()}>
+              <span className="tx-white fz-13 tx-uppercase">{badgeStatus}</span>
             </div>
-          </Tooltip>
+          )}
         </div>
         <div className="d-flex align-items-center mt-8 gap-12">
           <Image src={ton} alt={'ton'} width={48} height={48} priority />

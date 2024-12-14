@@ -28,10 +28,10 @@ interface IHistoryItem {
 const HistoryItem: React.FC<IHistoryItem> = ({
   type,
   title,
-  description,
-  infoColor = 'var(--color-green-1)',
   infoTitle,
+  description,
   infoDescription,
+  infoColor = 'var(--color-green-1)',
 }) => {
   const Icon = useMemo(() => MAPPER_ICON[type], [type])
   return (

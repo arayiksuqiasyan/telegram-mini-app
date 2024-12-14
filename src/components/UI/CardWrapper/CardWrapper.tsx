@@ -11,10 +11,11 @@ export enum CardWrapperType {
 interface ICardWrapper extends PropsWithChildren {
   type?: CardWrapperType
   children?: React.ReactNode
+  className?: string
 }
 
-const CardWrapper: React.FC<ICardWrapper> = ({ type = CardWrapperType.Primary, children }) => {
-  return <div className={classNames(classes.wrapper, classes[type])}>{children}</div>
+const CardWrapper: React.FC<ICardWrapper> = ({ type = CardWrapperType.Primary, className, children }) => {
+  return <div className={classNames(classes.wrapper, className, classes[type])}>{children}</div>
 }
 
 export default CardWrapper
