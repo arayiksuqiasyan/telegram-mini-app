@@ -1,0 +1,49 @@
+.tabMenu {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.tabMenuItem {
+  gap: 8px;
+  display: flex;
+  padding: 6px;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+  transition: 0.15s all ease-in-out;
+  background: var(--color-gray-5);
+
+  &.active {
+    background: var(--color-light-1);
+    .tabMenuItemText {
+      color: var(--color-dark-1);
+    }
+
+    .badge {
+      background: var(--color-dark-transparent-2);
+    }
+  }
+}
+
+.tabMenuItemText {
+  font-weight: 500;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--color-light-1);
+  transition: 0.15s all ease-in-out;
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.32);
+  transition: 0.15s all ease-in-out;
+}
+
+.tabBadgeText {
+  max-width: 30px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--color-light-1);
+}
