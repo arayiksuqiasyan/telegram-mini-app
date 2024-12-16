@@ -21,7 +21,7 @@ const LevelUpModal: React.FC<ILevelUpModal> = ({ onConfirm, level, coinCount, ..
   return (
     <Modal {...rest} fullScreen>
       <div className={'w-100 h-100 d-flex flex-column justify-content-between'}>
-        <span className="fz-24 tx-white tx-center">Congratulations!</span>
+        <span className="fz-24 tx-white tx-center mt-16">Congratulations!</span>
         <Lottie animationData={confettiAnimation} className={classes.confetti} loop={false} />
         <div className="d-flex flex-column align-items-center gap-16">
           <span className="fz-24 tx-white tx-center">You’re moving to</span>
@@ -36,9 +36,15 @@ const LevelUpModal: React.FC<ILevelUpModal> = ({ onConfirm, level, coinCount, ..
             {coinCount && <span className="tx-green fz-28">{coinCount} TON</span>}
           </CardWrapper>
         </div>
-        <Button className="w-100 radius-10 pt-14 pb-14 mt-16" onClick={() => onConfirm?.()}>
-          Confirm
-        </Button>
+
+        <div className="d-flex flex-column">
+          <span className="tx-white fz-24 tx-center">
+            You&#39;ve done a good job, keep it up and get even more rewards
+          </span>
+          <Button className="w-100 radius-10 pt-14 pb-14 mt-16" onClick={() => onConfirm?.()}>
+            Confirm
+          </Button>
+        </div>
       </div>
     </Modal>
   )
