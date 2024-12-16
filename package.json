@@ -18,6 +18,7 @@
     "axios": "^1.7.9",
     "classnames": "^2.5.1",
     "date-fns": "^4.1.0",
+    "lottie-react": "^2.4.0",
     "motion": "^11.14.1",
     "next": "14.2.16",
     "react": "^18",

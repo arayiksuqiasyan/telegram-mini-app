@@ -8,11 +8,13 @@ import CardPortfolioBalance, { BadgeStatus } from '@/components/CardPortfolioBal
 import BottomSheetVerification from '@/components/BottomSheetVerification/BottomSheetVerification'
 import History from '@/components/History/History'
 import { HistoryItemType } from '@/components/History/HistoryItem'
+import useAppStore from '@/stores/useAppStore'
 
 // import WalletIcon from '/public/svg/wallet.svg'
 // import StarIcon from '/public/svg/star.svg'
 
 const HomePage = () => {
+  const { setLevelUpModalProps } = useAppStore()
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -54,7 +56,7 @@ const HomePage = () => {
           tonCount={'45.00'}
           tonPrice={'$230.40'}
           timeLeft={Date.now() + 172801000}
-          onLevelUp={() => console.log('onLevelUp')}
+          onLevelUp={() => setLevelUpModalProps({ coinCount: '+15.00', level: 1 })}
         />
       </div>
       <div className={'ml-16 mr-16'}>
