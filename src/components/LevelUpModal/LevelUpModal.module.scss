@@ -1,16 +1,28 @@
-.tonIcon {
-  width: 32px;
-  height: 32px;
+.footer {
+  position: fixed;
+  bottom: calc(var(--bottom-tab-bar-height) + 16px);
+  gap: 12px;
+  left: 16px;
+  right: 16px;
   display: flex;
-  border-radius: 50%;
+  margin-top: 4px;
   align-items: center;
-  justify-content: center;
-  background: var(--color-blue-7);
 }
 
-.confetti{
-  left: 0;
-  right: 0;
-  position: absolute;
-  pointer-events: none;
+.copy {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  border-radius: 10px;
+  justify-content: center;
+  background: var(--color-gray-5);
+}
+
+.darkBlock {
+  width: 100%;
+  padding: 16px;
+  border-radius: 10px;
+  background: var(--color-dark-transparent-3);
 }

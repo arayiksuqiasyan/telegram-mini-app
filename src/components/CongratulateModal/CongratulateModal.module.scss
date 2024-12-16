@@ -1,0 +1,16 @@
+.tonIcon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-blue-7);
+}
+
+.confetti{
+  left: 0;
+  right: 0;
+  position: absolute;
+  pointer-events: none;
+}

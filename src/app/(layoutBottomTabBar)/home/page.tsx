@@ -1,21 +1,21 @@
 'use client'
 import React, { useState } from 'react'
 import classes from './HomePage.module.scss'
-import Button, { ButtonTypes } from '@/components/UI/Button/Button'
+import Button from '@/components/UI/Button/Button'
 import CardProgress from '@/components/CardProgress/CardProgress'
 import CardNextTarget from '@/components/CardNextTarget/CardNextTarget'
 import CardPortfolioBalance, { BadgeStatus } from '@/components/CardPortfolioBalance/CardPortfolioBalance'
 import BottomSheetVerification from '@/components/BottomSheetVerification/BottomSheetVerification'
 import History from '@/components/History/History'
 import { HistoryItemType } from '@/components/History/HistoryItem'
-import useAppStore from '@/stores/useAppStore'
+import LevelUpModal, { LevelUpModalStatus } from '@/components/LevelUpModal/LevelUpModal'
 
 // import WalletIcon from '/public/svg/wallet.svg'
 // import StarIcon from '/public/svg/star.svg'
 
 const HomePage = () => {
-  const { setLevelUpModalProps } = useAppStore()
   const [isOpen, setIsOpen] = useState(false)
+  const [isOpenLevelUpModal, setIsOpenLevelUpModal] = useState(false)
 
   return (
     <div className={classes.wrapper}>
@@ -56,7 +56,7 @@ const HomePage = () => {
           tonCount={'45.00'}
           tonPrice={'$230.40'}
           timeLeft={Date.now() + 172801000}
-          onLevelUp={() => setLevelUpModalProps({ coinCount: '+15.00', level: 1 })}
+          onLevelUp={() => setIsOpenLevelUpModal(true)}
         />
       </div>
       <div className={'ml-16 mr-16'}>
@@ -103,6 +103,7 @@ const HomePage = () => {
           description={'Today'}
         />
       </History>
+      <LevelUpModal status={LevelUpModalStatus.InProgress}  copyText={"example"} onClose={() => setIsOpenLevelUpModal(false)} isOpen={isOpenLevelUpModal} level={1}  onPaySlot={()=>{}}/>
 
       <BottomSheetVerification isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>

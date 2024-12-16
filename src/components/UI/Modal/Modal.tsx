@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import classNames from 'classnames'
 
 export type BaseModalProps = PropsWithChildren & {
+  zIndex?: number
   isOpen: boolean
   className?: string
   classNameInner?: string
@@ -29,6 +30,7 @@ const Modal: React.FC<BaseModalProps> = ({
   maxWidth,
   children,
   className,
+  zIndex = 9999,
   classNameInner,
   onClickOutside,
   fullScreen = false,
@@ -42,6 +44,7 @@ const Modal: React.FC<BaseModalProps> = ({
           exit="hidden"
           transition={{ duration: 0.2 }}
           variants={backdropVariants}
+          style={{ zIndex: zIndex }}
           className={classNames(classes.modalWrapper, { [classes.fullScreen]: fullScreen }, className)}
           onClick={() => onClickOutside?.()}
         >
