@@ -9,8 +9,8 @@ import BottomSheetVerification from '@/components/BottomSheetVerification/Bottom
 import History from '@/components/History/History'
 import { HistoryItemType } from '@/components/History/HistoryItem'
 
-import WalletIcon from '/public/svg/wallet.svg'
-import StarIcon from '/public/svg/star.svg'
+// import WalletIcon from '/public/svg/wallet.svg'
+// import StarIcon from '/public/svg/star.svg'
 
 const HomePage = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -20,22 +20,22 @@ const HomePage = () => {
       <Button className="fw-700 ml-16 mr-16" onClick={() => setIsOpen(true)}>
         Verification now
       </Button>
-      <Button type={ButtonTypes.Success} className="pt-12 pb-12 radius-10 ml-16 mr-16">
-        <div className="w-100 d-flex align-items-center justify-content-between">
-          <div className="d-flex align-items-center gap-16 flex-grow-1">
-            <WalletIcon />
-            <span className="fz-17 tx-white">Wallet connected</span>
-          </div>
-          <span className="fz-17 tx-white">Tonkeeper</span>
-        </div>
-      </Button>
+      {/*<Button type={ButtonTypes.Success} className="pt-12 pb-12 radius-10 ml-16 mr-16">*/}
+      {/*  <div className="w-100 d-flex align-items-center justify-content-between">*/}
+      {/*    <div className="d-flex align-items-center gap-16 flex-grow-1">*/}
+      {/*      <WalletIcon />*/}
+      {/*      <span className="fz-17 tx-white">Wallet connected</span>*/}
+      {/*    </div>*/}
+      {/*    <span className="fz-17 tx-white">Tonkeeper</span>*/}
+      {/*  </div>*/}
+      {/*</Button>*/}
 
-      <Button type={ButtonTypes.Success} className="pt-12 pb-12 radius-10 ml-16 mr-16">
-        <div className="w-100 d-flex align-items-center gap-16">
-          <StarIcon />
-          <span className="fz-17 tx-white">Connect with Stars</span>
-        </div>
-      </Button>
+      {/*<Button type={ButtonTypes.Success} className="pt-12 pb-12 radius-10 ml-16 mr-16">*/}
+      {/*  <div className="w-100 d-flex align-items-center gap-16">*/}
+      {/*    <StarIcon />*/}
+      {/*    <span className="fz-17 tx-white">Connect with Stars</span>*/}
+      {/*  </div>*/}
+      {/*</Button>*/}
 
       <div className={'ml-16 mr-16'}>
         <CardPortfolioBalance
