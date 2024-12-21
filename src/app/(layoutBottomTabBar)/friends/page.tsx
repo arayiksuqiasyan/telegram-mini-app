@@ -11,9 +11,11 @@ import CopyIcon from '/public/svg/copy.svg'
 import TickIcon from '/public/svg/tick.svg'
 
 import manky from '/public/manky.png'
+import useAppStore from '@/stores/useAppStore'
 
 const FriendsPage = () => {
   const [isCopied, setIsCopied] = useState(false)
+  const { telegramSafeAreaViewBottom } = useAppStore()
 
   const onCopy = useCallback((text: string) => {
     if (!text) {
@@ -46,7 +48,7 @@ const FriendsPage = () => {
       </CardWrapper>
 
       <section className={classes.friends}>
-        {Array(1)
+        {Array(20)
           .fill(0)
           .map((_, i) => (
             <FriendCard
@@ -76,6 +78,7 @@ const FriendsPage = () => {
           </motion.div>
         </div>
       </footer>
+      <div style={{ paddingBottom: `calc(var(--bottom-tab-bar-height) + ${telegramSafeAreaViewBottom}px - 8px)` }} />
     </div>
   )
 }

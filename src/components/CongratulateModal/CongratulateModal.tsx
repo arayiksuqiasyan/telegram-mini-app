@@ -10,6 +10,7 @@ const Lottie = dynamic(() => import('lottie-react'), { ssr: false })
 
 import TonIcon from '/public/svg/ton.svg'
 import dynamic from 'next/dynamic'
+import useAppStore from '@/stores/useAppStore'
 
 interface ILevelUpModal extends BaseModalProps {
   onConfirm?: () => void
@@ -18,6 +19,7 @@ interface ILevelUpModal extends BaseModalProps {
 }
 
 const CongratulateModal: React.FC<ILevelUpModal> = ({ onConfirm, level, coinCount, ...rest }) => {
+  const { telegramSafeAreaViewBottom } = useAppStore()
   return (
     <Modal {...rest} fullScreen>
       <div className={'w-100 h-100 d-flex flex-column justify-content-between'}>
@@ -41,11 +43,12 @@ const CongratulateModal: React.FC<ILevelUpModal> = ({ onConfirm, level, coinCoun
           <span className="tx-white fz-24 tx-center">
             You&#39;ve done a good job, keep it up and get even more rewards
           </span>
-          <Button className="w-100 radius-10 pt-14 pb-14 mt-16" onClick={() => onConfirm?.()}>
-            Confirm
+          <Button className="w-100 radius-10 pt-14 pb-14 mt-16 fw-700" onClick={() => onConfirm?.()}>
+            Continue
           </Button>
         </div>
       </div>
+      <div style={{ paddingBottom: telegramSafeAreaViewBottom }} />
     </Modal>
   )
 }

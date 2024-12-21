@@ -2,7 +2,6 @@
   left: 12px;
   z-index: 10;
   right: 12px;
-  bottom: 12px;
   display: flex;
   padding: 12px;
   position: fixed;
@@ -11,16 +10,6 @@
   justify-content: space-around;
   background: var(--color-gray-5);
   height: var(--bottom-tab-bar-height);
-
-  &:after {
-    content: '';
-    width: 100%;
-    z-index: -1;
-    position: absolute;
-    inset: 0 0 -12px 0;
-    pointer-events: none;
-    background: var(--bottom-tab-bard-gradinet);
-  }
 }
 
 .tabBarOption {

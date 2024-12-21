@@ -5,11 +5,10 @@
 }
 
 .containerWrapper {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
   &.withScroll {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-
     .containerChildren {
       overflow: auto;
     }
@@ -86,14 +85,14 @@
   background: var(--color-gray-3);
 }
 
-.taskListItemImage{
+.taskListItemImage {
   width: 36px;
   height: 36px;
   object-fit: cover;
   border-radius: 8px;
 }
 
-.taskListItemSection{
+.taskListItemSection {
   gap: 2px;
   flex-grow: 1;
   flex-shrink: 1;

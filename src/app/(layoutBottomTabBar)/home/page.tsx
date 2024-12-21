@@ -9,6 +9,7 @@ import BottomSheetVerification from '@/components/BottomSheetVerification/Bottom
 import History from '@/components/History/History'
 import { HistoryItemType } from '@/components/History/HistoryItem'
 import LevelUpModal, { LevelUpModalStatus } from '@/components/LevelUpModal/LevelUpModal'
+import useAppStore from '@/stores/useAppStore'
 
 // import WalletIcon from '/public/svg/wallet.svg'
 // import StarIcon from '/public/svg/star.svg'
@@ -16,6 +17,7 @@ import LevelUpModal, { LevelUpModalStatus } from '@/components/LevelUpModal/Leve
 const HomePage = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [isOpenLevelUpModal, setIsOpenLevelUpModal] = useState(false)
+  const { telegramSafeAreaViewBottom } = useAppStore()
 
   return (
     <div className={classes.wrapper}>
@@ -103,9 +105,18 @@ const HomePage = () => {
           description={'Today'}
         />
       </History>
-      <LevelUpModal status={LevelUpModalStatus.InProgress}  copyText={"example"} onClose={() => setIsOpenLevelUpModal(false)} isOpen={isOpenLevelUpModal} level={1}  onPaySlot={()=>{}}/>
+      <LevelUpModal
+        status={LevelUpModalStatus.InProgress}
+        copyText={'example'}
+        onClose={() => setIsOpenLevelUpModal(false)}
+        isOpen={isOpenLevelUpModal}
+        level={1}
+        onPaySlot={() => {
+        }}
+      />
 
       <BottomSheetVerification isOpen={isOpen} setIsOpen={setIsOpen} />
+      <div style={{ paddingBottom: `calc(var(--bottom-tab-bar-height) + 8px )` }} />
     </div>
   )
 }

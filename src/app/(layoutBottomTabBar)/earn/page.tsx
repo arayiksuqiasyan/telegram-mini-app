@@ -4,8 +4,10 @@ import classes from './Earn.module.scss'
 import TabMenu, { TabMenuData } from '@/components/TabMenu/TabMenu'
 import TaskList from '@/components/TaskList/TaskList'
 import { ButtonTypes } from '@/components/UI/Button/Button'
+import useAppStore from '@/stores/useAppStore'
 
 const EarnPage = () => {
+  const { telegramSafeAreaViewBottom } = useAppStore()
   const [tabMenuData] = useState<TabMenuData[]>([
     { id: 1, title: 'Item 1', showBadge: true, badgeContent: '1' },
     { id: 2, title: 'Item 2', showBadge: true, badgeContent: '2' },
@@ -53,6 +55,8 @@ const EarnPage = () => {
           buttonType={ButtonTypes.Primary}
         />
       </TaskList>
+
+      <div style={{ paddingBottom: `calc(var(--bottom-tab-bar-height) + ${telegramSafeAreaViewBottom}px - 8px)` }} />
     </div>
   )
 }

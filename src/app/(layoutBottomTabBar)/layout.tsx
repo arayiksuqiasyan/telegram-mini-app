@@ -64,7 +64,6 @@ const LayoutBottomTabBar: React.FC<ILayoutBottomTabBar> = ({ children }) => {
   return (
     <div className={classes.wrapper}>
       {children}
-      <div className={classes.bottomTabBarPadding} />
       <BottomTabBar />
     </div>
   )

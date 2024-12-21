@@ -21,7 +21,7 @@ const OnBoarding = () => {
   return (
     <div className={classes.wrapper}>
       <header className="w-100 d-flex flex-column align-items-center">
-        <span className="tx-white tx-center fz-34">Welcome to the app! You have already completed the task</span>
+        <span className="tx-white tx-center fz-34 tx-uppercase">Welcome to the app! You have already completed the task</span>
         <span className="tx-white tx-center fz-24 mt-16">Complete the tasks further and increase your capital</span>
       </header>
 
