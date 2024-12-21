@@ -1,13 +1,22 @@
-import { init, shareURL, viewport } from '@telegram-apps/sdk-react'
+"use client"
+import { init, shareURL, viewport, postEvent } from '@telegram-apps/sdk-react'
 import { InviteFriends, TelegramUser } from '@/interfaces/telegram'
+import WebApp from '@twa-dev/sdk'
 
 export class TelegramService {
-  public static initTelegramAppsSdkReact() {
+  public static initTelegramAppsSdkReact(): void {
     try {
       init()
     } catch (error) {
       console.error('Error initializing Telegram SDK:', error)
     }
+  }
+
+  public static setThemeTelegram(): void {
+    try {
+    postEvent('web_app_set_background_color', { color: `#0f0f0f` })
+    postEvent('web_app_set_header_color', { color: `#0f0f0f` })
+    } catch {}
   }
 
   public static viewportExpanding(): void {
@@ -34,8 +43,6 @@ export class TelegramService {
 
   public static async getTelegramUser(): Promise<TelegramUser | undefined> {
     if (typeof window !== 'undefined') {
-      const WebApp = (await import('@twa-dev/sdk')).default
-      WebApp.ready()
       return WebApp?.initDataUnsafe?.user
     }
     return undefined

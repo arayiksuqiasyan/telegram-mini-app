@@ -7,3 +7,12 @@
   padding: 16px 0;
   flex-direction: column;
 }
+
+.stickyWrapper{
+  top: 0;
+  gap: 16px;
+  width: 100%;
+  display: flex;
+  position: sticky;
+  flex-direction: column;
+}

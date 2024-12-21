@@ -54,12 +54,12 @@ const CardNextTarget: React.FC<ICardNextTarget> = ({
           onClick={() => onLevelUp?.()}
         >
           <div className="d-flex align-items-center gap-6">
-            <span className="tx-nowrap">Level UP</span>
             <LevelUpIcon
-              width={16}
-              height={16}
+              width={20}
+              height={20}
               fill={disabled ? 'var(--color-light-transparent-1)' : 'var(--color-light-1)'}
             />
+            <span className="tx-nowrap fw-700 fz-17">Level UP</span>
           </div>
         </Button>
       </div>

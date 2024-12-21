@@ -51,7 +51,7 @@ const LevelUpModal: React.FC<ILevelUpModal> = ({
 
   const onInviteFriends = useCallback(() => {
     TelegramService.inviteFriends({
-      url: 'https://telegram-mini-app-ten-liard.vercel.app/',
+      url: 't.me/TonllionBot/tonllion',
       message: 'Telegram Mini App',
     })
   }, [])

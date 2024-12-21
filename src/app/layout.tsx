@@ -7,7 +7,7 @@ import { Metadata } from 'next'
 import { TelegramService } from '@/services/telegram'
 import useAppStore from '@/stores/useAppStore'
 import CongratulateModal from '@/components/CongratulateModal/CongratulateModal'
-import { viewport } from '@telegram-apps/sdk-react'
+import { request, viewport } from '@telegram-apps/sdk-react'
 
 const TonConnectUIProvider = dynamic(() => import('@tonconnect/ui-react').then(mod => mod.TonConnectUIProvider), {
   ssr: false,
@@ -23,13 +23,10 @@ interface IRootLayout extends PropsWithChildren {
 }
 
 const RootLayout: React.FC<IRootLayout> = ({ children }) => {
-  const {
-    congratulateModalProps,
-    setCongratulateModalProps,
-    setTelegramSafeAreaViewBottom,
-  } = useAppStore()
+  const { congratulateModalProps, setCongratulateModalProps, setTelegramSafeAreaViewBottom } = useAppStore()
 
   useEffect(() => {
+    TelegramService.setThemeTelegram()
     TelegramService.initTelegramAppsSdkReact()
     TelegramService.viewportExpanding()
     TelegramService.viewportBindCssVars()

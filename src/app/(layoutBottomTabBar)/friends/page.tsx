@@ -30,7 +30,7 @@ const FriendsPage = () => {
 
   const onInviteFriends = useCallback(() => {
     TelegramService.inviteFriends({
-      url: 'https://telegram-mini-app-ten-liard.vercel.app/',
+      url: 't.me/TonllionBot/tonllion',
       message: 'Telegram Mini App',
     })
   }, [])
@@ -78,7 +78,7 @@ const FriendsPage = () => {
           </motion.div>
         </div>
       </footer>
-      <div style={{ paddingBottom: `calc(var(--bottom-tab-bar-height) + ${telegramSafeAreaViewBottom}px - 8px)` }} />
+      <div style={{ paddingBottom: `calc(var(--bottom-tab-bar-height) + ${telegramSafeAreaViewBottom}px)` }} />
     </div>
   )
 }
