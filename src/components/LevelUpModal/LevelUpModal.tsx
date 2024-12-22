@@ -60,7 +60,8 @@ const LevelUpModal: React.FC<ILevelUpModal> = ({
 
   return (
     <Modal {...rest} zIndex={9} classNameInner={'h-100 p-0'} className={'h-100'} fullScreen>
-      <div className={'w-100 h-100 d-flex flex-column overflow-auto pl-16 pr-16 mt-16'}>
+      <div className={'w-100 h-100 d-flex flex-column mt-16'}>
+        <div className={classes.scrollWrapper}>
         <div className="d-flex align-items-center justify-content-between">
           <div className="d-flex align-items-center gap-8">
             <span className="tx-white fw-500 fz-34">TASK</span>
@@ -80,7 +81,7 @@ const LevelUpModal: React.FC<ILevelUpModal> = ({
         </CardWrapper>
         <CardWrapper className="mt-12" type={CardWrapperType.Secondary}>
           <div className="w-100 d-flex align-items-center justify-content-between">
-            <span className="tx-white fz-13">Conditions for transition</span>
+            <span className="tx-white fz-13 tx-uppercase">Conditions for transition</span>
             {status === LevelUpModalStatus.InProgress && <div className="badge tx-white fz-13">In progress</div>}
           </div>
           <span className="tx-white fz-24 mt-8">Invite 1 000 friends</span>
@@ -103,6 +104,7 @@ const LevelUpModal: React.FC<ILevelUpModal> = ({
             Pay Slots
           </Button>
         </CardWrapper>
+        </div>
         <footer className={classes.footer}>
           <Button className="w-100 pt-14 pb-14 radius-10 fw-700" onClick={() => onInviteFriends?.()}>
             Invite Friends
