@@ -60,7 +60,7 @@ const LevelUpModal: React.FC<ILevelUpModal> = ({
 
   return (
     <Modal {...rest} zIndex={9} classNameInner={'h-100 p-0'} className={'h-100'} fullScreen>
-      <div className={'w-100 h-100 d-flex flex-column mt-16'}>
+      <div className={'w-100 h-100 d-flex flex-column'}>
         <div className={classes.scrollWrapper}>
         <div className="d-flex align-items-center justify-content-between">
           <div className="d-flex align-items-center gap-8">
