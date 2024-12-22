@@ -82,7 +82,7 @@ const LevelUpModal: React.FC<ILevelUpModal> = ({
         <CardWrapper className="mt-12" type={CardWrapperType.Secondary}>
           <div className="w-100 d-flex align-items-center justify-content-between">
             <span className="tx-white fz-13 tx-uppercase">Conditions for transition</span>
-            {status === LevelUpModalStatus.InProgress && <div className="badge tx-white fz-13">In progress</div>}
+            {status === LevelUpModalStatus.InProgress && <div className="badge tx-white fz-13 tx-uppercase">In progress</div>}
           </div>
           <span className="tx-white fz-24 mt-8">Invite 1 000 friends</span>
           <div className={classNames(classes.darkBlock, 'mt-12')}>
