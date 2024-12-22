@@ -121,7 +121,7 @@ const LevelUpModal: React.FC<ILevelUpModal> = ({
             </motion.div>
           </div>
         </footer>
-        <div style={{ paddingBottom: `calc(var(--bottom-tab-bar-height) + ${telegramSafeAreaViewBottom}px)` }} />
+        <div style={{ paddingBottom: `calc(var(--bottom-tab-bar-height) + ${telegramSafeAreaViewBottom}px + 16px)` }} />
       </div>
     </Modal>
   )
