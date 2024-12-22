@@ -5,6 +5,7 @@
   display: flex;
   padding: 12px;
   position: fixed;
+  bottom:var(--bottom);
   border-radius: 16px;
   align-items: center;
   justify-content: space-around;
@@ -17,7 +18,7 @@
     z-index: -1;
     position: absolute;
     pointer-events: none;
-    inset: 0 0 -12px -16px;
+    inset: 0 0 calc(var(--bottom) * -1) -16px;
     width: calc(100% + 32px);
     background: var(--bottom-tab-bard-gradinet);
   }

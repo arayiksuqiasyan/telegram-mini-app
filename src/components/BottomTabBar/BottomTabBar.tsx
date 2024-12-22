@@ -1,5 +1,5 @@
 'use client'
-import React, { useMemo } from 'react'
+import React, { CSSProperties, useMemo } from 'react'
 import classes from './BottomTabBar.module.scss'
 import Link from 'next/link'
 import { Route } from '@/enums/app'
@@ -27,7 +27,7 @@ const BottomTabBar = () => {
   )
 
   return (
-    <div className={classes.bottomTabBar} style={{ bottom: bottom + 'px' }}>
+    <div className={classes.bottomTabBar} style={{'--bottom': bottom + "px" } as CSSProperties}>
       {MENU_OPTIONS.map(item => {
         const { id, icon, href } = item
         return (
