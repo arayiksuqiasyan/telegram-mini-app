@@ -11,6 +11,7 @@ import TickIcon from '/public/svg/tick.svg'
 import CloseIcon from '/public/svg/close.svg'
 import classNames from 'classnames'
 import { TelegramService } from '@/services/telegram'
+import useAppStore from '@/stores/useAppStore'
 
 export enum LevelUpModalStatus {
   InProgress = 'progress',
@@ -37,6 +38,7 @@ const LevelUpModal: React.FC<ILevelUpModal> = ({
   ...rest
 }) => {
   const [isCopied, setIsCopied] = useState(false)
+  const { telegramSafeAreaViewBottom } = useAppStore()
 
   const onCopy = useCallback((text: string) => {
     if (!text) {
@@ -117,7 +119,7 @@ const LevelUpModal: React.FC<ILevelUpModal> = ({
             </motion.div>
           </div>
         </footer>
-        <div style={{ paddingBottom: 124 }} />
+        <div style={{ paddingBottom: `calc(var(--bottom-tab-bar-height) + ${telegramSafeAreaViewBottom}px)` }} />
       </div>
     </Modal>
   )
