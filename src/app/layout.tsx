@@ -34,12 +34,6 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
     TelegramService.viewportBindCssVars()
   }, [])
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      WebApp.showAlert('start')
-    }
-  }, [])
-
   const onLoadHandler = () => {
     if (viewport.mount.isAvailable()) {
       if (!viewport.isMounting()) {
