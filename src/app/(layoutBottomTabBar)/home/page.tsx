@@ -12,7 +12,6 @@ import LevelUpModal, { LevelUpModalStatus } from '@/components/LevelUpModal/Leve
 import useAppStore from '@/stores/useAppStore'
 import WebApp from '@twa-dev/sdk'
 
-console.log('WebApp', WebApp)
 import { postEvent } from '@telegram-apps/sdk-react'
 
 // import WalletIcon from '/public/svg/wallet.svg'
@@ -38,7 +37,7 @@ const HomePage = () => {
                 console.log('param', param)
               })
               // @ts-ignore
-              window.Telegram.WebView.postEvent('prepared_message_sent')
+              window?.Telegram?.WebView?.postEvent('prepared_message_sent')
             }
           }}
         >
