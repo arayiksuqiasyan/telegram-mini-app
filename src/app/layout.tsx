@@ -52,13 +52,17 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
           <input style={{ height: 32 }} type="text" onChange={event => setInput(event.target.value)} />
           <Button
             onClick={() => {
-              if (typeof window !== 'undefined') {
-                // @ts-ignore
-                window?.Telegram?.WebApp?.shareMessage(input)
-              }
+              WebApp?.shareMessage(input)
             }}
           >
             SendMessage
+          </Button>
+          <Button
+            onClick={() => {
+              WebApp?.shareMessage(input)
+            }}
+          >
+            SendMessage 2
           </Button>
           {children}
           <CongratulateModal
