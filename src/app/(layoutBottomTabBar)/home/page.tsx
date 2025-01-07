@@ -11,6 +11,7 @@ import { HistoryItemType } from '@/components/History/HistoryItem'
 import LevelUpModal, { LevelUpModalStatus } from '@/components/LevelUpModal/LevelUpModal'
 import useAppStore from '@/stores/useAppStore'
 import WebApp from '@twa-dev/sdk'
+import { postEvent } from '@telegram-apps/sdk-react'
 
 // import WalletIcon from '/public/svg/wallet.svg'
 // import StarIcon from '/public/svg/star.svg'
@@ -21,6 +22,24 @@ const HomePage = () => {
   const { tonWalletAddress } = useAppStore()
   const [input, setInput] = useState('')
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      WebApp.onEvent('shareMessageSent', param => {
+        console.log('Сообщение успешно отправлено!', param)
+      })
+      WebApp.onEvent('shareMessageFailed', error => {
+        console.error('Ошибка при отправке сообщения:', error)
+        if (error.error === 'USER_DECLINED') {
+          console.log('Пользователь закрыл диалог без отправки сообщения.')
+        } else if (error.error === 'MESSAGE_SEND_FAILED') {
+          console.log('Ошибка при попытке отправить сообщение.')
+        } else {
+          console.log('Неизвестная ошибка:', error.error)
+        }
+      })
+    }
+  }, [])
+
   return (
     <div className={classes.wrapper}>
       <div className={classes.stickyWrapper}>
@@ -30,12 +49,10 @@ const HomePage = () => {
         <input style={{ height: 32 }} type="text" onChange={event => setInput(event.target.value)} />
         <Button
           onClick={() => {
-            console.log(123)
             if (typeof window !== 'undefined') {
               WebApp?.shareMessage(input, param => {
                 console.log('param', param)
               })
-
             }
           }}
         >
