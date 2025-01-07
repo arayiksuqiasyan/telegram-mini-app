@@ -32,7 +32,22 @@ const HomePage = () => {
           onClick={() => {
             console.log(123)
             if (typeof window !== 'undefined') {
-              WebApp?.shareMessage(input)
+              WebApp?.shareMessage(input, param => {
+                console.log('param', param)
+              })
+              WebApp.onEvent('shareMessageSent', param => {
+                console.log('Сообщение успешно отправлено!', param)
+              })
+              WebApp.onEvent('shareMessageFailed', error => {
+                console.error('Ошибка при отправке сообщения:', error)
+                if (error.error === 'USER_DECLINED') {
+                  console.log('Пользователь закрыл диалог без отправки сообщения.')
+                } else if (error.error === 'MESSAGE_SEND_FAILED') {
+                  console.log('Ошибка при попытке отправить сообщение.')
+                } else {
+                  console.log('Неизвестная ошибка:', error.error)
+                }
+              })
             }
           }}
         >
