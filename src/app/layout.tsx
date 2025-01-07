@@ -58,7 +58,7 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
           <Button
             onClick={() => {
               if (typeof window !== 'undefined') {
-                WebApp.shareMessage('ENJYnmU2pUhIdvuR', param => {
+                WebApp.shareMessage('XR0CgMlij2ZCpkeB', param => {
                   setStatus(String(param))
                 })
 
