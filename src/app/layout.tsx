@@ -49,7 +49,7 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
     <html lang="en" onLoad={onLoadHandler}>
     <body>
     <Script src="https://telegram.org/js/telegram-web-app.js?56" strategy={'beforeInteractive'} />
-    <TonConnectUIProvider manifestUrl={'https://telegram-mini-app-ten-liard.vercel.app/manifest.json'}>
+    {/*<TonConnectUIProvider manifestUrl={'https://telegram-mini-app-ten-liard.vercel.app/manifest.json'}>*/}
       {/*{children}*/}
       {/*<CongratulateModal*/}
       {/*  onConfirm={() => setCongratulateModalProps(undefined)}*/}
@@ -57,7 +57,7 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
       {/*  level={congratulateModalProps?.level}*/}
       {/*  coinCount={congratulateModalProps?.coinCount}*/}
       {/*/>*/}
-    </TonConnectUIProvider>
+    {/*</TonConnectUIProvider>*/}
     <input style={{ height: 32 }} type="text" onChange={event => setInput(event.target.value)} />
     <Button
       onClick={() => {
