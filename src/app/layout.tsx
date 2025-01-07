@@ -28,11 +28,16 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
   const { congratulateModalProps, setCongratulateModalProps, setTelegramSafeAreaViewBottom } = useAppStore()
 
   useEffect(() => {
-    WebApp.showAlert('start')
     TelegramService.setThemeTelegram()
     TelegramService.initTelegramAppsSdkReact()
     TelegramService.viewportExpanding()
     TelegramService.viewportBindCssVars()
+  }, [])
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      WebApp.showAlert('start')
+    }
   }, [])
 
   const onLoadHandler = () => {
@@ -56,8 +61,6 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
                   console.log('param', param)
                   WebApp.showAlert(String(param))
                 })
-              } else {
-                WebApp.showAlert('window undefined')
               }
             }}
           >
