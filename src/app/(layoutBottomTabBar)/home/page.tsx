@@ -30,6 +30,7 @@ const HomePage = () => {
         <input style={{ height: 32 }} type="text" onChange={event => setInput(event.target.value)} />
         <Button
           onClick={() => {
+            console.log(123)
             if (typeof window !== 'undefined') {
               WebApp?.shareMessage(input)
             }
