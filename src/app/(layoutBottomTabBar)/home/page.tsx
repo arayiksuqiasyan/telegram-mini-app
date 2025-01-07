@@ -27,6 +27,7 @@ const HomePage = () => {
   return (
     <div className={classes.wrapper}>
       <div className={classes.stickyWrapper}>
+        <span className={'tx-white fz-13'}>{JSON.stringify(user,null,2)}</span>
         <Button className="fw-700 ml-16 mr-16" onClick={() => setIsOpen(true)}>
           Verification now
         </Button>
