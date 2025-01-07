@@ -12,12 +12,13 @@ import LevelUpModal, { LevelUpModalStatus } from '@/components/LevelUpModal/Leve
 import useAppStore from '@/stores/useAppStore'
 import WebApp from '@twa-dev/sdk'
 
-import { postEvent } from '@telegram-apps/sdk-react'
+import { postEvent, User } from '@telegram-apps/sdk-react'
 
 // import WalletIcon from '/public/svg/wallet.svg'
 // import StarIcon from '/public/svg/star.svg'
 
 const HomePage = () => {
+  const [user,setUser] = useState<User | null>(null)
   const [isOpen, setIsOpen] = useState(false)
   const [isOpenLevelUpModal, setIsOpenLevelUpModal] = useState(false)
   const { tonWalletAddress } = useAppStore()
@@ -45,6 +46,8 @@ const HomePage = () => {
         <Button
           onClick={() => {
             if (typeof window !== 'undefined') {
+              // @ts-ignore
+              setUser(WebApp?.initDataUnsafe?.user)
               console.log(WebApp?.initDataUnsafe?.user)
             }
           }}
