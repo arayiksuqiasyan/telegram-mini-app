@@ -10,6 +10,7 @@ import History from '@/components/History/History'
 import { HistoryItemType } from '@/components/History/HistoryItem'
 import LevelUpModal, { LevelUpModalStatus } from '@/components/LevelUpModal/LevelUpModal'
 import useAppStore from '@/stores/useAppStore'
+import WebApp from '@twa-dev/sdk'
 
 // import WalletIcon from '/public/svg/wallet.svg'
 // import StarIcon from '/public/svg/star.svg'
@@ -18,12 +19,23 @@ const HomePage = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [isOpenLevelUpModal, setIsOpenLevelUpModal] = useState(false)
   const { tonWalletAddress } = useAppStore()
+  const [input, setInput] = useState('')
 
   return (
     <div className={classes.wrapper}>
       <div className={classes.stickyWrapper}>
         <Button className="fw-700 ml-16 mr-16" onClick={() => setIsOpen(true)}>
           Verification now
+        </Button>
+        <input style={{ height: 32 }} type="text" onChange={event => setInput(event.target.value)} />
+        <Button
+          onClick={() => {
+            if (typeof window !== 'undefined') {
+              WebApp?.shareMessage(input)
+            }
+          }}
+        >
+          SendMessage
         </Button>
         {/*<Button type={ButtonTypes.Success} className="pt-12 pb-12 radius-10 ml-16 mr-16">*/}
         {/*  <div className="w-100 d-flex align-items-center justify-content-between">*/}

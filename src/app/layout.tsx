@@ -43,31 +43,11 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
     }
   }
 
-  const [input, setInput] = React.useState('')
   return (
     <html lang="en" onLoad={onLoadHandler}>
     <body>
     <Script src="https://telegram.org/js/telegram-web-app.js?56" strategy={'beforeInteractive'} />
     <TonConnectUIProvider manifestUrl={'https://telegram-mini-app-ten-liard.vercel.app/manifest.json'}>
-      <input style={{ height: 32 }} type="text" onChange={event => setInput(event.target.value)} />
-      <Button
-        onClick={() => {
-          if (typeof window !== 'undefined') {
-            WebApp?.shareMessage(input)
-          }
-        }}
-      >
-        SendMessage
-      </Button>
-      <Button
-        onClick={() => {
-          if (typeof window !== 'undefined') {
-            WebApp?.shareMessage(input)
-          }
-        }}
-      >
-        SendMessage
-      </Button>
       {children}
       <CongratulateModal
         onConfirm={() => setCongratulateModalProps(undefined)}
