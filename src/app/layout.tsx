@@ -49,6 +49,7 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
     }
   }
 
+  const [status,setStatus] = React.useState('none')
   return (
     <html lang="en" onLoad={onLoadHandler}>
       <body>
@@ -58,14 +59,15 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
             onClick={() => {
               if (typeof window !== 'undefined') {
                 WebApp.shareMessage('0579XN84SbXbIyhf', param => {
-                  console.log('param', param)
-                  WebApp.showAlert(String(param))
+                  setStatus(String(param))
                 })
+
               }
             }}
           >
             SendMessage
           </Button>
+          <span className={'tx-white'}>{status}</span>
           {children}
           <CongratulateModal
             onConfirm={() => setCongratulateModalProps(undefined)}
