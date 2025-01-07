@@ -8,6 +8,8 @@ import { TelegramService } from '@/services/telegram'
 import useAppStore from '@/stores/useAppStore'
 import CongratulateModal from '@/components/CongratulateModal/CongratulateModal'
 import { request, viewport } from '@telegram-apps/sdk-react'
+import Button from '@/components/UI/Button/Button'
+import WebApp from '@twa-dev/sdk'
 
 const TonConnectUIProvider = dynamic(() => import('@tonconnect/ui-react').then(mod => mod.TonConnectUIProvider), {
   ssr: false,
@@ -26,6 +28,7 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
   const { congratulateModalProps, setCongratulateModalProps, setTelegramSafeAreaViewBottom } = useAppStore()
 
   useEffect(() => {
+    WebApp.showAlert('start')
     TelegramService.setThemeTelegram()
     TelegramService.initTelegramAppsSdkReact()
     TelegramService.viewportExpanding()
@@ -46,6 +49,20 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
       <body>
         <Script src="https://telegram.org/js/telegram-web-app.js?56" strategy={'beforeInteractive'} />
         <TonConnectUIProvider manifestUrl={'https://telegram-mini-app-ten-liard.vercel.app/manifest.json'}>
+          <Button
+            onClick={() => {
+              if (typeof window !== 'undefined') {
+                WebApp.shareMessage('0579XN84SbXbIyhf', param => {
+                  console.log('param', param)
+                  WebApp.showAlert(String(param))
+                })
+              } else {
+                WebApp.showAlert('window undefined')
+              }
+            }}
+          >
+            SendMessage
+          </Button>
           {children}
           <CongratulateModal
             onConfirm={() => setCongratulateModalProps(undefined)}
