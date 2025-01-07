@@ -21,25 +21,6 @@ const HomePage = () => {
   const [isOpenLevelUpModal, setIsOpenLevelUpModal] = useState(false)
   const { tonWalletAddress } = useAppStore()
   const [input, setInput] = useState('')
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      WebApp.onEvent('shareMessageSent', param => {
-        console.log('Сообщение успешно отправлено!', param)
-      })
-      WebApp.onEvent('shareMessageFailed', error => {
-        console.error('Ошибка при отправке сообщения:', error)
-        if (error.error === 'USER_DECLINED') {
-          console.log('Пользователь закрыл диалог без отправки сообщения.')
-        } else if (error.error === 'MESSAGE_SEND_FAILED') {
-          console.log('Ошибка при попытке отправить сообщение.')
-        } else {
-          console.log('Неизвестная ошибка:', error.error)
-        }
-      })
-    }
-  }, [])
-
   return (
     <div className={classes.wrapper}>
       <div className={classes.stickyWrapper}>
@@ -57,6 +38,16 @@ const HomePage = () => {
           }}
         >
           SendMessage
+        </Button>
+        <Button
+          onClick={() => {
+            if (typeof window !== 'undefined') {
+              // @ts-ignore
+              window.Telegram.WebView.receiveEvent('popup_closed', {})
+            }
+          }}
+        >
+          Close
         </Button>
         {/*<Button type={ButtonTypes.Success} className="pt-12 pb-12 radius-10 ml-16 mr-16">*/}
         {/*  <div className="w-100 d-flex align-items-center justify-content-between">*/}
