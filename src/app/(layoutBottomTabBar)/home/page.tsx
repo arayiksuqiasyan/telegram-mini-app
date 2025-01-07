@@ -41,15 +41,15 @@ const HomePage = () => {
         >
           SendMessage
         </Button>
+
         <Button
           onClick={() => {
             if (typeof window !== 'undefined') {
-              // @ts-ignore
-              window?.Telegram?.WebView?.postEvent('prepared_message_sent')
+              console.log(WebApp?.initDataUnsafe?.user)
             }
           }}
         >
-          Reset
+          Get User
         </Button>
         {/*<Button type={ButtonTypes.Success} className="pt-12 pb-12 radius-10 ml-16 mr-16">*/}
         {/*  <div className="w-100 d-flex align-items-center justify-content-between">*/}
