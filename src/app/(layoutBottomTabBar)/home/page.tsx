@@ -36,10 +36,6 @@ const HomePage = () => {
                 console.log('param', param)
               })
 
-              setTimeout(()=>{
-                WebApp.close()
-              },5000)
-
             }
           }}
         >
