@@ -18,16 +18,24 @@ import { postEvent, User } from '@telegram-apps/sdk-react'
 // import StarIcon from '/public/svg/star.svg'
 
 const HomePage = () => {
-  const [user,setUser] = useState<User | null>(null)
+  const [user, setUser] = useState<User | null>(null)
   const [isOpen, setIsOpen] = useState(false)
   const [isOpenLevelUpModal, setIsOpenLevelUpModal] = useState(false)
   const { tonWalletAddress } = useAppStore()
   const [input, setInput] = useState('')
+  const [telUsername, setTelUsername] = useState('123')
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // @ts-ignore
+      setTelUsername(WebApp?.initDataUnsafe?.user)
+    }
+  }, [])
 
   return (
     <div className={classes.wrapper}>
       <div className={classes.stickyWrapper}>
-        <span className={'tx-white fz-13'}>{JSON.stringify(user,null,2)}</span>
+        <span className={'tx-white fz-13'}>telUsername:{JSON.stringify(telUsername, null, 2)}</span>
         <Button className="fw-700 ml-16 mr-16" onClick={() => setIsOpen(true)}>
           Verification now
         </Button>
