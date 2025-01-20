@@ -1,5 +1,5 @@
 'use client'
-import React, { PropsWithChildren, useEffect } from 'react'
+import React, { PropsWithChildren, useEffect, useLayoutEffect } from 'react'
 import './app.scss'
 import dynamic from 'next/dynamic'
 import Script from 'next/script'
@@ -22,6 +22,10 @@ interface IRootLayout extends PropsWithChildren {
   children?: React.ReactNode
 }
 
+if (viewport.mount.isAvailable()) {
+  viewport.mount()
+}
+
 const RootLayout: React.FC<IRootLayout> = ({ children }) => {
   const { congratulateModalProps, setCongratulateModalProps, setTelegramSafeAreaViewBottom } = useAppStore()
 
@@ -35,7 +39,6 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
   useEffect(() => {
     console.log('111111',viewport.mount.isAvailable())
     if (viewport.mount.isAvailable()) {
-      viewport.mount()
       console.log('2222222',viewport?.isMounting())
       setTimeout(()=>{
         console.log('3333333',viewport?.isMounting())
