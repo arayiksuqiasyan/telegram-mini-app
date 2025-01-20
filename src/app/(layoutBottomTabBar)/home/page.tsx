@@ -31,7 +31,7 @@ const HomePage = () => {
       const innerContentHeight = stickyWrapperRef.current.scrollHeight
       const clientHeight = window.innerHeight
       const bottomTabBar = 52 + telegramSafeAreaViewBottom
-      const value = clientHeight - innerContentHeight - bottomTabBar - 32 - telegramSafeAreaViewTop - 24
+      const value = clientHeight - innerContentHeight - bottomTabBar - 64 - telegramSafeAreaViewTop
       if (value > 0) {
         setTopOffset(0)
       } else {
