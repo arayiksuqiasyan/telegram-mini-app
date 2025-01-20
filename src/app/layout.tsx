@@ -34,15 +34,6 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
   }, [])
 
 
-  useEffect(() => {
-    console.log('worked')
-    if (typeof window !== 'undefined') {
-      WebApp.onEvent('safeAreaChanged', (value) => {
-        console.log('value', value)
-      })
-    }
-  }, [])
-
   const onLoadHandler = async () => {
     console.log("111111")
     if (viewport.mount.isAvailable()) {
@@ -54,16 +45,10 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
     }
   }
 
-  useEffect(() => {
-    document.addEventListener('DOMContentLoaded', onLoadHandler)
-    return () => {
-      document.removeEventListener('DOMContentLoaded', onLoadHandler)
-    }
-  }, [])
 
   return (
     <html lang="en">
-    <body style={{ paddingTop: 92 }}>
+    <body style={{ paddingTop: 92 }} onLoad={onLoadHandler}>
     <Script src="https://telegram.org/js/telegram-web-app.js?56" strategy={'beforeInteractive'} />
     <TonConnectUIProvider manifestUrl={'https://telegram-mini-app-ten-liard.vercel.app/manifest.json'}>
       {children}
