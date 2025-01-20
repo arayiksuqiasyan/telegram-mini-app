@@ -43,7 +43,7 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
 
   return (
     <html lang="en" onLoad={onLoadHandler}>
-    <body style={{ paddingTop: 73 }}>
+    <body style={{ paddingTop: 92 }}>
     <Script src="https://telegram.org/js/telegram-web-app.js?56" strategy={'beforeInteractive'} />
     <TonConnectUIProvider manifestUrl={'https://telegram-mini-app-ten-liard.vercel.app/manifest.json'}>
       {children}
