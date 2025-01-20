@@ -30,21 +30,29 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
     TelegramService.initTelegramAppsSdkReact()
     TelegramService.viewportExpanding()
     TelegramService.viewportBindCssVars()
+  }, [])
+
+  useEffect(() => {
+    console.log('111111',viewport.mount.isAvailable())
     if (viewport.mount.isAvailable()) {
       viewport.mount()
+      console.log('2222222',viewport?.isMounting())
+      setTimeout(()=>{
+        console.log('3333333',viewport?.isMounting())
+      },0)
+      if (viewport?.isMounting()) {
+        console.log('4444444',viewport.safeAreaInsetBottom())
+        setTimeout(()=>{
+          console.log('5555555',viewport.safeAreaInsetBottom())
+        },0)
+        setTelegramSafeAreaViewBottom(viewport.safeAreaInsetBottom())
+      }
     }
   }, [])
 
-  const onLoadHandler = async () => {
-    console.log(11)
-    if (viewport?.isMounting()) {
-      console.log('viewport.safeAreaInsetBottom()',viewport.safeAreaInsetBottom())
-      setTelegramSafeAreaViewBottom(viewport.safeAreaInsetBottom())
-    }
-  }
 
   return (
-    <html lang="en" onLoad={onLoadHandler}>
+    <html lang="en">
     <body style={{ paddingTop: 92 }}>
     <Script src="https://telegram.org/js/telegram-web-app.js?56" strategy={'beforeInteractive'} />
     <TonConnectUIProvider manifestUrl={'https://telegram-mini-app-ten-liard.vercel.app/manifest.json'}>
