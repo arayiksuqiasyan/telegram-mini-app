@@ -1,5 +1,5 @@
 'use client'
-import React, { PropsWithChildren, useEffect, useState } from 'react'
+import React, { PropsWithChildren, useEffect } from 'react'
 import './app.scss'
 import dynamic from 'next/dynamic'
 import Script from 'next/script'
@@ -7,9 +7,7 @@ import { Metadata } from 'next'
 import { TelegramService } from '@/services/telegram'
 import useAppStore from '@/stores/useAppStore'
 import CongratulateModal from '@/components/CongratulateModal/CongratulateModal'
-import { request, viewport } from '@telegram-apps/sdk-react'
-import Button from '@/components/UI/Button/Button'
-import WebApp from '@twa-dev/sdk'
+import { viewport } from '@telegram-apps/sdk-react'
 
 const TonConnectUIProvider = dynamic(() => import('@tonconnect/ui-react').then(mod => mod.TonConnectUIProvider), {
   ssr: false,
@@ -26,7 +24,6 @@ interface IRootLayout extends PropsWithChildren {
 
 const RootLayout: React.FC<IRootLayout> = ({ children }) => {
   const { congratulateModalProps, setCongratulateModalProps, setTelegramSafeAreaViewBottom } = useAppStore()
-  const [viewportData, setViewportData] = useState({})
 
   useEffect(() => {
     TelegramService.setThemeTelegram()
@@ -40,18 +37,13 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
       if (!viewport.isMounting()) {
         viewport.mount()
       }
-      setTimeout(() => {
-        setTelegramSafeAreaViewBottom(viewport.safeAreaInsetBottom())
-        setViewportData(viewport)
-      }, 0)
+      setTimeout(() => setTelegramSafeAreaViewBottom(viewport.safeAreaInsetBottom()), 0)
     }
   }
 
   return (
     <html lang="en" onLoad={onLoadHandler}>
-    {/*// @ts-ignore*/}
-    <body style={{ paddingTop: viewport?.top || 1 }}>
-    <span className={'fz-13 tx-white'}>{JSON.stringify(viewportData, null, 2)}</span>
+    <body style={{ paddingTop: 73 }}>
     <Script src="https://telegram.org/js/telegram-web-app.js?56" strategy={'beforeInteractive'} />
     <TonConnectUIProvider manifestUrl={'https://telegram-mini-app-ten-liard.vercel.app/manifest.json'}>
       {children}
