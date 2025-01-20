@@ -42,7 +42,7 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
       }
       setTimeout(() => {
         setTelegramSafeAreaViewBottom(viewport.safeAreaInsetBottom())
-        setTop(viewport.safeAreaInsetTop())
+        setTop(viewport.contentSafeAreaInsetTop())
       }, 0)
     }
   }
