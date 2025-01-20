@@ -23,19 +23,11 @@ const HomePage = () => {
   const [isOpenLevelUpModal, setIsOpenLevelUpModal] = useState(false)
   const { tonWalletAddress } = useAppStore()
   const [input, setInput] = useState('')
-  const [telUsername, setTelUsername] = useState('123')
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // @ts-ignore
-      setTelUsername(WebApp?.initDataUnsafe?.user)
-    }
-  }, [])
 
   return (
     <div className={classes.wrapper}>
       <div className={classes.stickyWrapper}>
-        <span className={'tx-white fz-13'}>telUsername:{JSON.stringify(telUsername, null, 2)}</span>
         <Button className="fw-700 ml-16 mr-16" onClick={() => setIsOpen(true)}>
           Verification now
         </Button>
@@ -52,17 +44,6 @@ const HomePage = () => {
           SendMessage
         </Button>
 
-        <Button
-          onClick={() => {
-            if (typeof window !== 'undefined') {
-              // @ts-ignore
-              setUser(WebApp?.initDataUnsafe?.user)
-              console.log(WebApp?.initDataUnsafe?.user)
-            }
-          }}
-        >
-          Get User
-        </Button>
         {/*<Button type={ButtonTypes.Success} className="pt-12 pb-12 radius-10 ml-16 mr-16">*/}
         {/*  <div className="w-100 d-flex align-items-center justify-content-between">*/}
         {/*    <div className="d-flex align-items-center gap-16 flex-grow-1">*/}

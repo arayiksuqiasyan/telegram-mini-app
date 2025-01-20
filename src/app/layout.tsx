@@ -1,5 +1,5 @@
 'use client'
-import React, { PropsWithChildren, useEffect } from 'react'
+import React, { PropsWithChildren, useEffect, useState } from 'react'
 import './app.scss'
 import dynamic from 'next/dynamic'
 import Script from 'next/script'
@@ -26,6 +26,7 @@ interface IRootLayout extends PropsWithChildren {
 
 const RootLayout: React.FC<IRootLayout> = ({ children }) => {
   const { congratulateModalProps, setCongratulateModalProps, setTelegramSafeAreaViewBottom } = useAppStore()
+  const [top, setTop] = useState(0)
 
   useEffect(() => {
     TelegramService.setThemeTelegram()
@@ -39,13 +40,16 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
       if (!viewport.isMounting()) {
         viewport.mount()
       }
-      setTimeout(() => setTelegramSafeAreaViewBottom(viewport.safeAreaInsetBottom()), 0)
+      setTimeout(() => {
+        setTelegramSafeAreaViewBottom(viewport.safeAreaInsetBottom())
+        setTop(viewport.safeAreaInsetTop())
+      }, 0)
     }
   }
 
   return (
     <html lang="en" onLoad={onLoadHandler}>
-    <body>
+    <body style={{paddingTop: top}}>
     <Script src="https://telegram.org/js/telegram-web-app.js?56" strategy={'beforeInteractive'} />
     <TonConnectUIProvider manifestUrl={'https://telegram-mini-app-ten-liard.vercel.app/manifest.json'}>
       {children}
