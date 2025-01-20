@@ -37,6 +37,7 @@ const Modal: React.FC<BaseModalProps> = ({
   fullScreen = false,
 }) => {
   const {telegramSafeAreaViewBottom} = useAppStore()
+  console.log("telegramSafeAreaViewBottom",telegramSafeAreaViewBottom)
   return (
     <AnimatePresence>
       {isOpen && (
