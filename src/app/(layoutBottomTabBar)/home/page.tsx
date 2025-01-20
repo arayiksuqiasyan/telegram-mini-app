@@ -31,11 +31,12 @@ const HomePage = () => {
       const innerContentHeight = stickyWrapperRef.current.scrollHeight
       const clientHeight = window.innerHeight
       const bottomTabBar = 52 + telegramSafeAreaViewBottom
-      const value = clientHeight - innerContentHeight - bottomTabBar - 32
+      const value = clientHeight - innerContentHeight - bottomTabBar - 32 - telegramSafeAreaViewTop + 16
+      console.log(clientHeight , innerContentHeight , bottomTabBar , telegramSafeAreaViewTop)
       if (value > 0) {
         setTopOffset(0)
       } else {
-        setTopOffset(value - telegramSafeAreaViewTop - 16)
+        setTopOffset(clientHeight - innerContentHeight - bottomTabBar - 32 - telegramSafeAreaViewTop - 16)
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
