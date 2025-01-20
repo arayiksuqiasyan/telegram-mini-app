@@ -34,14 +34,15 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
 
   const onLoadHandler = async () => {
     if (viewport.mount.isAvailable()) {
-        viewport.mount()
+      viewport.mount()
 
-     while (true){
-      if(viewport?.isMounting()){
-        setTelegramSafeAreaViewBottom(viewport.safeAreaInsetBottom())
-        break
+      while (true) {
+        if (viewport?.isMounting()) {
+          setTelegramSafeAreaViewBottom(viewport.safeAreaInsetBottom())
+          break
+        }
+        await new Promise(resolve => setTimeout(resolve, 100))
       }
-      await new Promise(resolve => setTimeout(resolve, 100))
     }
   }
 
