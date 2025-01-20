@@ -31,7 +31,6 @@ const HomePage = () => {
         <Button className="fw-700 ml-16 mr-16" onClick={() => setIsOpen(true)}>
           Verification now
         </Button>
-        <input style={{ height: 32 }} type="text" onChange={event => setInput(event.target.value)} />
         <Button
           onClick={() => {
             if (typeof window !== 'undefined') {

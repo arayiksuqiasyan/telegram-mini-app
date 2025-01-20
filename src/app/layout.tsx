@@ -26,7 +26,7 @@ interface IRootLayout extends PropsWithChildren {
 
 const RootLayout: React.FC<IRootLayout> = ({ children }) => {
   const { congratulateModalProps, setCongratulateModalProps, setTelegramSafeAreaViewBottom } = useAppStore()
-  const [top, setTop] = useState(0)
+  const [viewportData, setViewportData] = useState({})
 
   useEffect(() => {
     TelegramService.setThemeTelegram()
@@ -42,14 +42,16 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
       }
       setTimeout(() => {
         setTelegramSafeAreaViewBottom(viewport.safeAreaInsetBottom())
-        setTop(viewport.safeAreaInsetTop())
+        setViewportData(viewport)
       }, 0)
     }
   }
 
   return (
     <html lang="en" onLoad={onLoadHandler}>
-    <body style={{paddingTop: top}}>
+    {/*// @ts-ignore*/}
+    <body style={{ paddingTop: viewport?.top || 1 }}>
+    <span className={'fz-13 tx-white'}>{JSON.stringify(viewportData, null, 2)}</span>
     <Script src="https://telegram.org/js/telegram-web-app.js?56" strategy={'beforeInteractive'} />
     <TonConnectUIProvider manifestUrl={'https://telegram-mini-app-ten-liard.vercel.app/manifest.json'}>
       {children}
