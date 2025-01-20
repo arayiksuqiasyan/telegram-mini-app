@@ -35,13 +35,13 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
   const getSafe = async () => {
     if (viewport.mount.isAvailable()) {
       viewport.mount()
-      while (true) {
-        console.log('viewport?.isMounting()',viewport?.isMounting())
-        if (viewport?.isMounting()) {
-          setTelegramSafeAreaViewBottom(viewport.safeAreaInsetBottom())
-          break
-        }
-        await new Promise(resolve => setTimeout(resolve, 100))
+      console.log('viewport.isMounted();',viewport.isMounted())
+      if (viewport?.isMounting()) {
+        console.log('viewport.safeAreaInsetBottom()',viewport.safeAreaInsetBottom())
+        setTimeout(()=>{
+          console.log('viewport.safeAreaInsetBottom()222',viewport.safeAreaInsetBottom())
+        },1000)
+        setTelegramSafeAreaViewBottom(viewport.safeAreaInsetBottom())
       }
     }
   }
