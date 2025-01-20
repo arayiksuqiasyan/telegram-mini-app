@@ -44,17 +44,25 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
   }, [])
 
   const onLoadHandler = async () => {
+    console.log("111111")
     if (viewport.mount.isAvailable()) {
       await viewport.mount()
+      console.log('222222',viewport.isMounting())
       if (!viewport.isMounting()) {
       }
       setTimeout(() => setTelegramSafeAreaViewBottom(viewport.safeAreaInsetBottom()), 0)
     }
   }
 
+  useEffect(() => {
+    document.addEventListener('DOMContentLoaded', onLoadHandler)
+    return () => {
+      document.removeEventListener('DOMContentLoaded', onLoadHandler)
+    }
+  }, [])
 
   return (
-    <html lang="en" onLoad={onLoadHandler}>
+    <html lang="en">
     <body style={{ paddingTop: 92 }}>
     <Script src="https://telegram.org/js/telegram-web-app.js?56" strategy={'beforeInteractive'} />
     <TonConnectUIProvider manifestUrl={'https://telegram-mini-app-ten-liard.vercel.app/manifest.json'}>
