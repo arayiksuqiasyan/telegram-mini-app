@@ -22,6 +22,11 @@ interface IRootLayout extends PropsWithChildren {
   children?: React.ReactNode
 }
 
+if (viewport.mount.isAvailable()) {
+  viewport.mount()
+  console.log('viewport.safeAreaInsetBottom()',viewport.safeAreaInsetBottom())
+}
+
 const RootLayout: React.FC<IRootLayout> = ({ children }) => {
   const { congratulateModalProps, setCongratulateModalProps, setTelegramSafeAreaViewBottom } = useAppStore()
 
@@ -34,7 +39,6 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
 
 
   const onLoadHandler = async () => {
-    console.log('viewport.isMounting()',viewport.isMounting())
     if (viewport.mount.isAvailable()) {
        await viewport.mount()
       if (!viewport.isMounting()) {
