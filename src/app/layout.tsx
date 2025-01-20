@@ -32,14 +32,17 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
     TelegramService.viewportBindCssVars()
   }, [])
 
-  const onLoadHandler = () => {
+  const onLoadHandler = async () => {
     if (viewport.mount.isAvailable()) {
-      if (!viewport.isMounting()) {
         viewport.mount()
-      }
-      setTimeout(() => setTelegramSafeAreaViewBottom(viewport.safeAreaInsetBottom()), 1000)
-    }
 
+     while (true){
+      if(viewport?.isMounting()){
+        setTelegramSafeAreaViewBottom(viewport.safeAreaInsetBottom())
+        break
+      }
+      await new Promise(resolve => setTimeout(resolve, 100))
+    }
   }
 
   return (
