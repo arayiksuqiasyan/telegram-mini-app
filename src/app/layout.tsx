@@ -36,14 +36,16 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
 
   useEffect(() => {
     console.log('worked')
-    WebApp.onEvent("safeAreaChanged",(value)=>{
-      console.log('value', value)
-    })
+    if (typeof window !== 'undefined') {
+      WebApp.onEvent('safeAreaChanged', (value) => {
+        console.log('value', value)
+      })
+    }
   }, [])
 
   const onLoadHandler = async () => {
     if (viewport.mount.isAvailable()) {
-       await viewport.mount()
+      await viewport.mount()
       if (!viewport.isMounting()) {
       }
       setTimeout(() => setTelegramSafeAreaViewBottom(viewport.safeAreaInsetBottom()), 0)
