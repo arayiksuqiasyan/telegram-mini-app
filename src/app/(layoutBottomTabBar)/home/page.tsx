@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import classes from './HomePage.module.scss'
 import Button, { ButtonTypes } from '@/components/UI/Button/Button'
 import CardProgress from '@/components/CardProgress/CardProgress'
@@ -21,13 +21,33 @@ const HomePage = () => {
   const [user, setUser] = useState<User | null>(null)
   const [isOpen, setIsOpen] = useState(false)
   const [isOpenLevelUpModal, setIsOpenLevelUpModal] = useState(false)
-  const { tonWalletAddress } = useAppStore()
+  const { tonWalletAddress, telegramSafeAreaViewBottom } = useAppStore()
   const [input, setInput] = useState('')
+  const [topOffset, setTopOffset] = useState(0)
+  const stickyWrapperRef = useRef<HTMLDivElement | null>(null)
 
+  const updateStickyHeight = useCallback(() => {
+    if (stickyWrapperRef.current) {
+      const innerContentHeight = stickyWrapperRef.current.scrollHeight
+      const clientHeight = window.innerHeight
+      const bottomTabBar = 52 + telegramSafeAreaViewBottom
+      const value = clientHeight - innerContentHeight - bottomTabBar - 32
+      if (value > 0) {
+        setTopOffset(0)
+      } else {
+        setTopOffset(clientHeight - innerContentHeight - bottomTabBar - 32)
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stickyWrapperRef.current])
+
+  useEffect(() => {
+    setTimeout(() => updateStickyHeight(), 0)
+  }, [updateStickyHeight, tonWalletAddress])
 
   return (
     <div className={classes.wrapper}>
-      <div className={classes.stickyWrapper}>
+      <div ref={stickyWrapperRef} className={classes.stickyWrapper} style={{ top: `${topOffset}px` }}>
         <Button className="fw-700 ml-16 mr-16" onClick={() => setIsOpen(true)}>
           Verification now
         </Button>
@@ -125,7 +145,8 @@ const HomePage = () => {
         onClose={() => setIsOpenLevelUpModal(false)}
         isOpen={isOpenLevelUpModal}
         level={1}
-        onPaySlot={() => {}}
+        onPaySlot={() => {
+        }}
       />
 
       <BottomSheetVerification isOpen={isOpen} setIsOpen={setIsOpen} />
