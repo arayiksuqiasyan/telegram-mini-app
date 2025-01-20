@@ -2,6 +2,7 @@ import React, { PropsWithChildren } from 'react'
 import classes from './Modal.module.scss'
 import { motion, AnimatePresence } from 'framer-motion'
 import classNames from 'classnames'
+import useAppStore from '@/stores/useAppStore'
 
 export type BaseModalProps = PropsWithChildren & {
   zIndex?: number
@@ -35,6 +36,7 @@ const Modal: React.FC<BaseModalProps> = ({
   onClickOutside,
   fullScreen = false,
 }) => {
+  const {telegramSafeAreaViewBottom} = useAppStore()
   return (
     <AnimatePresence>
       {isOpen && (
@@ -44,7 +46,7 @@ const Modal: React.FC<BaseModalProps> = ({
           exit="hidden"
           transition={{ duration: 0.2 }}
           variants={backdropVariants}
-          style={{ zIndex: zIndex }}
+          style={{ zIndex: zIndex, paddingTop: 92 - telegramSafeAreaViewBottom}}
           className={classNames(classes.modalWrapper, { [classes.fullScreen]: fullScreen }, className)}
           onClick={() => onClickOutside?.()}
         >
