@@ -21,7 +21,7 @@ const HomePage = () => {
   const [user, setUser] = useState<User | null>(null)
   const [isOpen, setIsOpen] = useState(false)
   const [isOpenLevelUpModal, setIsOpenLevelUpModal] = useState(false)
-  const { tonWalletAddress, telegramSafeAreaViewBottom } = useAppStore()
+  const { tonWalletAddress, telegramSafeAreaViewBottom,telegramSafeAreaViewTop } = useAppStore()
   const [input, setInput] = useState('')
   const [topOffset, setTopOffset] = useState(0)
   const stickyWrapperRef = useRef<HTMLDivElement | null>(null)
@@ -31,15 +31,15 @@ const HomePage = () => {
       const innerContentHeight = stickyWrapperRef.current.scrollHeight
       const clientHeight = window.innerHeight
       const bottomTabBar = 52 + telegramSafeAreaViewBottom
-      const value = clientHeight - innerContentHeight - bottomTabBar - 32 - 92
+      const value = clientHeight - innerContentHeight - bottomTabBar - 32 - telegramSafeAreaViewTop
       if (value > 0) {
         setTopOffset(0)
       } else {
-        setTopOffset(clientHeight - innerContentHeight - bottomTabBar - 32 - 92)
+        setTopOffset(clientHeight - innerContentHeight - bottomTabBar - 32 - telegramSafeAreaViewTop)
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [stickyWrapperRef.current])
+  }, [stickyWrapperRef.current,telegramSafeAreaViewTop])
 
   useEffect(() => {
     setTimeout(() => updateStickyHeight(), 0)

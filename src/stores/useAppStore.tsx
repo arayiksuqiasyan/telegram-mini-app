@@ -7,6 +7,8 @@ type LevelUpModalProps = {
 }
 
 interface IAppStore {
+  telegramSafeAreaViewTop: number
+  setTelegramSafeAreaViewTop: (telegramSafeAreaViewTop: number) => void
   telegramSafeAreaViewBottom: number
   setTelegramSafeAreaViewBottom: (telegramSafeAreaViewBottom: number) => void
   congratulateModalProps?: LevelUpModalProps
@@ -18,6 +20,7 @@ interface IAppStore {
 }
 
 const initialValues = {
+  telegramSafeAreaViewTop: 54,
   telegramSafeAreaViewBottom: 34,
   congratulateModalProps: { coinCount: '+15.00', level: 2 }, // mock
   telegramUser: undefined,
@@ -28,6 +31,7 @@ const useAppStore: UseBoundStore<Mutate<StoreApi<IAppStore>, []>> = create(set =
   ...initialValues,
   setTonWalletAddress: tonWalletAddress => set({ tonWalletAddress }),
   setTelegramUser: telegramUser => set({ telegramUser }),
+  setTelegramSafeAreaViewTop: telegramSafeAreaViewTop => set({ telegramSafeAreaViewTop }),
   setCongratulateModalProps: congratulateModalProps => set({ congratulateModalProps }),
   setTelegramSafeAreaViewBottom: telegramSafeAreaViewBottom => set({ telegramSafeAreaViewBottom }),
 }))

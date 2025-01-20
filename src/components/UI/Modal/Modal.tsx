@@ -36,8 +36,8 @@ const Modal: React.FC<BaseModalProps> = ({
   onClickOutside,
   fullScreen = false,
 }) => {
-  const {telegramSafeAreaViewBottom} = useAppStore()
-  console.log('telegramSafeAreaViewBottom', telegramSafeAreaViewBottom)
+  const { telegramSafeAreaViewTop, telegramSafeAreaViewBottom } = useAppStore()
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -47,7 +47,7 @@ const Modal: React.FC<BaseModalProps> = ({
           exit="hidden"
           transition={{ duration: 0.2 }}
           variants={backdropVariants}
-          style={{ zIndex: zIndex, paddingTop: 92 - telegramSafeAreaViewBottom}}
+          style={{ zIndex: zIndex, paddingTop: telegramSafeAreaViewTop + telegramSafeAreaViewBottom}}
           className={classNames(classes.modalWrapper, { [classes.fullScreen]: fullScreen }, className)}
           onClick={() => onClickOutside?.()}
         >
