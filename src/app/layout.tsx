@@ -36,21 +36,22 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
     TelegramService.viewportBindCssVars()
   }, [])
 
-  useEffect(() => {
-    console.log('111111',viewport.mount.isAvailable())
+  const getSafe = async () => {
     if (viewport.mount.isAvailable()) {
-      console.log('2222222',viewport?.isMounting())
-      setTimeout(()=>{
-        console.log('3333333',viewport?.isMounting())
-      },0)
-      if (viewport?.isMounting()) {
-        console.log('4444444',viewport.safeAreaInsetBottom())
-        setTimeout(()=>{
-          console.log('5555555',viewport.safeAreaInsetBottom())
-        },0)
-        setTelegramSafeAreaViewBottom(viewport.safeAreaInsetBottom())
+
+      while (true) {
+        console.log('viewport?.isMounting()',viewport?.isMounting())
+        if (viewport?.isMounting()) {
+          setTelegramSafeAreaViewBottom(viewport.safeAreaInsetBottom())
+          break
+        }
+        await new Promise(resolve => setTimeout(resolve, 100))
       }
     }
+  }
+
+  useEffect(() => {
+    void getSafe()
   }, [])
 
 
