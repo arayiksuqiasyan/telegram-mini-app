@@ -8,6 +8,7 @@ import { TelegramService } from '@/services/telegram'
 import useAppStore from '@/stores/useAppStore'
 import CongratulateModal from '@/components/CongratulateModal/CongratulateModal'
 import { viewport } from '@telegram-apps/sdk-react'
+import WebApp from '@twa-dev/sdk'
 
 const TonConnectUIProvider = dynamic(() => import('@tonconnect/ui-react').then(mod => mod.TonConnectUIProvider), {
   ssr: false,
@@ -22,11 +23,6 @@ interface IRootLayout extends PropsWithChildren {
   children?: React.ReactNode
 }
 
-if (viewport.mount.isAvailable()) {
-  viewport.mount()
-  console.log('viewport.safeAreaInsetBottom()',viewport.safeAreaInsetBottom())
-}
-
 const RootLayout: React.FC<IRootLayout> = ({ children }) => {
   const { congratulateModalProps, setCongratulateModalProps, setTelegramSafeAreaViewBottom } = useAppStore()
 
@@ -37,6 +33,13 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
     TelegramService.viewportBindCssVars()
   }, [])
 
+
+  useEffect(() => {
+    console.log('worked')
+    WebApp.onEvent("safeAreaChanged",(value)=>{
+      console.log('value', value)
+    })
+  }, [])
 
   const onLoadHandler = async () => {
     if (viewport.mount.isAvailable()) {
