@@ -34,7 +34,7 @@ const RootLayout: React.FC<IRootLayout> = ({ children }) => {
 
   const getSafe = async () => {
     if (viewport.mount.isAvailable()) {
-      viewport.mount()
+      await viewport.mount()
       console.log('viewport.isMounted();',viewport.isMounted())
       if (viewport?.isMounting()) {
         console.log('viewport.safeAreaInsetBottom()',viewport.safeAreaInsetBottom())
