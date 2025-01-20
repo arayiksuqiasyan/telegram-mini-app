@@ -62,12 +62,12 @@ const HomePage = () => {
           </div>
         </Button>
 
-        <Button type={ButtonTypes.Success} className="pt-12 pb-12 radius-10 ml-16 mr-16">
-          <div className="w-100 d-flex align-items-center gap-16">
-            <StarIcon />
-            <span className="fz-17 tx-white">Connect with Stars</span>
-          </div>
-        </Button>
+        {/*<Button type={ButtonTypes.Success} className="pt-12 pb-12 radius-10 ml-16 mr-16">*/}
+        {/*  <div className="w-100 d-flex align-items-center gap-16">*/}
+        {/*    <StarIcon />*/}
+        {/*    <span className="fz-17 tx-white">Connect with Stars</span>*/}
+        {/*  </div>*/}
+        {/*</Button>*/}
 
         <div className={'ml-16 mr-16'}>
           <CardPortfolioBalance
