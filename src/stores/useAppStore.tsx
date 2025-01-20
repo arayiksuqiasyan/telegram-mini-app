@@ -18,7 +18,7 @@ interface IAppStore {
 }
 
 const initialValues = {
-  telegramSafeAreaViewBottom: 0,
+  telegramSafeAreaViewBottom: 34,
   congratulateModalProps: { coinCount: '+15.00', level: 2 }, // mock
   telegramUser: undefined,
   tonWalletAddress: undefined,
